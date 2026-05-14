@@ -1,0 +1,52 @@
+/* Theme (breakpoints, spacing scale etc.) + utilities — preflight excluded */
+@import "tailwindcss/theme";
+@import "tailwindcss/utilities";
+
+/* Tell Tailwind to scan PHP widget and function files for class names */
+@source "../../elementor";
+@source "../../functions";
+
+/* Map Tailwind design tokens to Elementor's global CSS custom properties.
+   Change colours/fonts in Elementor > Site Settings and Tailwind picks them up. */
+@theme {
+  --color-primary: var(--e-global-color-primary);
+  --color-secondary: var(--e-global-color-secondary);
+  --color-text: var(--e-global-color-text);
+  --color-accent: var(--e-global-color-accent);
+
+  --color-birch: #ebe6de;
+  --color-smoke: #e4dad0;
+  --color-cloud: #c7c0bb;
+  --color-fire: #dd5549;
+  --color-ember: #af382e;
+  --color-night: #160b20;
+  --color-ship: #392f42;
+  --color-pearl: #a297ac;
+
+  --font-heading: var(--e-global-typography-primary-font-family);
+  --font-body: var(--e-global-typography-text-font-family);
+}
+
+:root {
+  --gutter: 32px;
+  --content-max: 1216px;
+}
+
+@layer base {
+  .grid {
+    gap: var(--gutter);
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+}
+
+body {
+  background: var(--color-night) !important;
+  color: var(--color-cloud) !important;
+}
+
+.container {
+  width: 100%;
+  max-width: calc(var(--content-max) + var(--gutter) * 2);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}

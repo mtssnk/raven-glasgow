@@ -1,0 +1,53 @@
+# IGNORE GENERAL STUFF
+
+_notes/
+dwsync.xml
+node_modules/
+.sass-cache/
+.ftpconfig
+.htaccess
+.DS_Store
+*.bak
+*.env
+*.log
+*.map
+*.old
+*.psd
+*.scssc
+# *.sql
+*.sqlite
+.installedExtras
+
+
+# IGNORE TOP LEVEL WORDPRESS FILES
+
+/index.php
+/license.txt
+/readme.html
+/wp-*.php
+/wp-admin/
+/wp-includes/
+/xmlrpc.php
+
+
+# IGNORE WP-CONTENT DIRECTORY,
+# EXCEPT THEMES AND PLUGINS
+
+/wp-content/*
+/wp-content/mu-plugins/
+!/wp-content/themes/
+/wp-content/plugins/
+
+# ignore all themes except the custom child theme
+/wp-content/themes/twenty*
+/wp-content/themes/hello-elementor/
+
+# ignore wordpress plugins except where specified
+/wp-content/plugins/*
+!/wp-content/plugins/advanced-custom-fields/
+!/wp-content/plugins/elementor/
+!/wp-content/plugins/elementor-pro/
+
+# ignore wp-config (contains credentials)
+/wp-config.php
+/wp-config-ddev.php

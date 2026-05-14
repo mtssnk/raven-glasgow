@@ -51,3 +51,6 @@ node_modules/
 # ignore wp-config (contains credentials)
 /wp-config.php
 /wp-config-ddev.php
+
+# MCP config (contains API keys)
+/.mcp.json

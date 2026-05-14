@@ -1,0 +1,43 @@
+@utility btn {
+  @apply inline-flex items-center justify-center focus:outline-none;
+  gap: 0.5em;
+  border-radius: 7px;
+  font-weight: 700;
+  text-transform: uppercase;
+  & svg {
+    width: 1em;
+    height: 1em;
+    flex-shrink: 0;
+    stroke-width: 2px;
+  }
+}
+
+@utility btn-lg {
+  padding: 1em 1.4em;
+  @apply text-subtitle-lg;
+}
+
+@utility btn-md {
+  padding: 1em 1.3em;
+  @apply text-subtitle-md;
+}
+
+@utility btn-sm {
+  padding: 1em 1.2em;
+  @apply text-subtitle-sm;
+}
+
+@utility btn-primary {
+  background-color: var(--color-fire);
+  color: var(--color-night);
+}
+
+@utility btn-light {
+  background-color: var(--color-birch);
+  color: var(--color-night);
+}
+
+@utility btn-dark {
+  background-color: var(--color-night);
+  color: var(--color-birch);
+}

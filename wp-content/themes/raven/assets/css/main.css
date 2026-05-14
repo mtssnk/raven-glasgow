@@ -1,6 +1,8 @@
 /* Theme (breakpoints, spacing scale etc.) + utilities — preflight excluded */
 @import "tailwindcss/theme";
 @import "tailwindcss/utilities";
+@import "./typography.css";
+@import "./button.css";
 
 /* Tell Tailwind to scan PHP widget and function files for class names */
 @source "../../elementor";
@@ -23,8 +25,11 @@
   --color-ship: #392f42;
   --color-pearl: #a297ac;
 
-  --font-heading: var(--e-global-typography-primary-font-family);
-  --font-body: var(--e-global-typography-text-font-family);
+  --font-heading: cubano-sharp, sans-serif;
+  --font-body: interstate, sans-serif;
+
+  /* --font-heading: var(--e-global-typography-primary-font-family);
+  --font-body: var(--e-global-typography-text-font-family); */
 }
 
 :root {
@@ -39,9 +44,13 @@
   }
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background: var(--color-night) !important;
-  color: var(--color-cloud) !important;
+  color: var(--color-birch) !important;
 }
 
 .container {

@@ -6,9 +6,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 function hello_child_enqueue_styles() {
 	wp_enqueue_style(
+		'raven-adobe-fonts',
+		'https://use.typekit.net/tiq7mas.css',
+		[],
+		null
+	);
+
+	wp_enqueue_style(
 		'hello-elementor-child-main',
 		get_stylesheet_directory_uri() . '/assets/dist/main.css',
-		[],
+		[ 'raven-adobe-fonts' ],
 		filemtime( get_stylesheet_directory() . '/assets/dist/main.css' )
 	);
 }

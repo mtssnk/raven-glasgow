@@ -6,6 +6,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class Hello_Child_Two_Column_Media_Text extends \Elementor\Widget_Base {
 
+	use Hello_Child_Button_Controls;
+
 	public function get_name() {
 		return 'hello_child_two_column_media_text';
 	}
@@ -148,24 +150,11 @@ class Hello_Child_Two_Column_Media_Text extends \Elementor\Widget_Base {
 			'default' => esc_html__( 'Add your body copy here.', 'raven' ),
 		] );
 
-		$this->add_control( 'show_button', [
-			'label'   => esc_html__( 'Show Button', 'raven' ),
-			'type'    => \Elementor\Controls_Manager::SWITCHER,
-			'default' => '',
+		$this->add_control( 'btn_divider', [
+			'type'      => \Elementor\Controls_Manager::DIVIDER,
 		] );
 
-		$this->add_control( 'button_text', [
-			'label'     => esc_html__( 'Button Label', 'raven' ),
-			'type'      => \Elementor\Controls_Manager::TEXT,
-			'default'   => esc_html__( 'Learn More', 'raven' ),
-			'condition' => [ 'show_button' => 'yes' ],
-		] );
-
-		$this->add_control( 'button_url', [
-			'label'     => esc_html__( 'Button URL', 'raven' ),
-			'type'      => \Elementor\Controls_Manager::URL,
-			'condition' => [ 'show_button' => 'yes' ],
-		] );
+		$this->register_button_controls( 'btn' );
 
 		$this->end_controls_section();
 	}
@@ -242,17 +231,11 @@ class Hello_Child_Two_Column_Media_Text extends \Elementor\Widget_Base {
 
 				<div class="col-span-12 md:col-span-6 <?php echo esc_attr( $text_valign ); ?>">
 					<div>
-					<<?php echo $tag; ?>><?php echo esc_html( $settings['heading'] ); ?></<?php echo $tag; ?>>
+					<<?php echo $tag; ?> class="text-heading-xl"><?php echo esc_html( $settings['heading'] ); ?></<?php echo $tag; ?>>
 
 					<div><?php echo wp_kses_post( $settings['body'] ); ?></div>
 
-					<?php if ( 'yes' === $settings['show_button'] && ! empty( $settings['button_text'] ) ) :
-						$this->add_link_attributes( 'button_url', $settings['button_url'] );
-					?>
-						<a <?php $this->print_render_attribute_string( 'button_url' ); ?>>
-							<?php echo esc_html( $settings['button_text'] ); ?>
-						</a>
-					<?php endif; ?>
+					<?php echo $this->render_button( $settings, 'btn' ); ?>
 					</div>
 				</div>
 

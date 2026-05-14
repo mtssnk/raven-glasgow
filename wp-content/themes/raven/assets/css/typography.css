@@ -1,0 +1,95 @@
+/* ── Headings — Cubano Sharp ──────────────────────────────────────────────── */
+
+@utility text-heading-2xl {
+  font-family: var(--font-heading);
+  font-size: clamp(4.0311rem, 3.2418rem + 3.508vw, 5.9605rem);
+  font-weight: 400;
+  line-height: 0.91;
+  letter-spacing: -0.02em;
+}
+
+@utility text-heading-xl {
+  font-family: var(--font-heading);
+  font-size: clamp(3.3592rem, 2.7828rem + 2.5621vw, 4.7684rem);
+  font-weight: 400;
+  line-height: 0.94;
+  letter-spacing: -0.02em;
+}
+
+@utility text-heading-lg {
+  font-family: var(--font-heading);
+  font-size: clamp(2.7994rem, 2.384rem + 1.8461vw, 3.8147rem);
+  font-weight: 400;
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+}
+
+@utility text-heading-md {
+  font-family: var(--font-heading);
+  font-size: clamp(2.3328rem, 2.0387rem + 1.3072vw, 3.0518rem);
+  font-weight: 400;
+  line-height: 0.96;
+  letter-spacing: -0.02em;
+}
+
+@utility text-heading-sm {
+  font-family: var(--font-heading);
+  font-size: clamp(1.944rem, 1.7405rem + 0.9044vw, 2.4414rem);
+  font-weight: 400;
+  line-height: 1.03;
+  letter-spacing: -0.02em;
+}
+
+@utility text-heading-xs {
+  font-family: var(--font-heading);
+  font-size: clamp(1.62rem, 1.4837rem + 0.6057vw, 1.9531rem);
+  font-weight: 400;
+  line-height: 1.03;
+  letter-spacing: -0.02em;
+}
+
+/* ── Subtitles — Interstate ───────────────────────────────────────────────── */
+
+@utility text-subtitle-xl {
+  font-family: var(--font-body);
+  font-size: 1.375rem !important;
+  font-weight: 400;
+  line-height: 1.18;
+  letter-spacing: 0.084em;
+}
+
+@utility text-subtitle-lg {
+  font-family: var(--font-body);
+  font-size: 1.125rem !important;
+  font-weight: 700;
+  line-height: 1.11;
+  letter-spacing: 0.084em;
+  text-transform: uppercase;
+}
+
+@utility text-subtitle-md {
+  font-family: var(--font-body);
+  font-size: 1rem !important;
+  font-weight: 700;
+  line-height: 1.13;
+  letter-spacing: 0.084em;
+  text-transform: uppercase;
+}
+
+@utility text-subtitle-sm {
+  font-family: var(--font-body);
+  font-size: 0.875rem !important;
+  font-weight: 700;
+  line-height: 1.14;
+  letter-spacing: 0.084em;
+  text-transform: uppercase;
+}
+
+@utility text-subtitle-xs {
+  font-family: var(--font-body);
+  font-size: 0.75rem !important;
+  font-weight: 700;
+  line-height: 1.17;
+  letter-spacing: 0.084em;
+  text-transform: uppercase;
+}

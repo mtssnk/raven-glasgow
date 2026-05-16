@@ -1,0 +1,8 @@
+{
+  "name": "wp-freak",
+  "private": true,
+  "scripts": {
+    "dev": "pnpm --dir wp-content/themes/raven dev",
+    "build": "pnpm --dir wp-content/themes/raven build"
+  }
+}

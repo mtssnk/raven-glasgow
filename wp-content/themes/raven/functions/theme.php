@@ -20,3 +20,7 @@ function hello_child_enqueue_styles() {
 	);
 }
 add_action( 'wp_enqueue_scripts', 'hello_child_enqueue_styles' );
+
+add_action( 'wp_enqueue_scripts', function () {
+	wp_dequeue_style( 'hello-elementor' );
+}, 20 );

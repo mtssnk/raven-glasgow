@@ -30,6 +30,15 @@
 
   /* --font-heading: var(--e-global-typography-primary-font-family);
   --font-body: var(--e-global-typography-text-font-family); */
+
+  --space-2xs: clamp(0.5625rem, 0.5369rem + 0.1136vw, 0.625rem); // 9px to 10px
+  --space-xs: clamp(0.875rem, 0.8494rem + 0.1136vw, 0.9375rem); // 14px to 15px
+  --space-s: clamp(1.125rem, 1.0739rem + 0.2273vw, 1.25rem); // 18px to 20px
+  --space-m: clamp(1.6875rem, 1.6108rem + 0.3409vw, 1.875rem); // 27px to 30px
+  --space-l: clamp(2.25rem, 2.1477rem + 0.4545vw, 2.5rem);  // 36px to 40px
+  --space-xl: clamp(3.375rem, 3.2216rem + 0.6818vw, 3.75rem); // 54px to 60px
+  --space-2xl: clamp(4.5rem, 4.2955rem + 0.9091vw, 5rem); // 72px to 80px
+  --space-3xl: clamp(6.75rem, 6.4432rem + 1.3636vw, 7.5rem); // 108px to 120px
 }
 
 :root {

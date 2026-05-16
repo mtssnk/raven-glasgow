@@ -6,6 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // Tailwind safelist — dynamic class names used in render_button():
 // btn btn-primary btn-light btn-dark btn-lg btn-md btn-sm
+// text-subtitle-lg text-subtitle-md text-subtitle-sm
 
 trait Hello_Child_Button_Controls {
 
@@ -67,10 +68,13 @@ trait Hello_Child_Button_Controls {
 			return '';
 		}
 
-		$url     = $settings[ "{$prefix}_url" ] ?? [];
-		$variant = $settings[ "{$prefix}_variant" ] ?? 'primary';
-		$size    = $settings[ "{$prefix}_size" ] ?? 'lg';
-		$icon    = $settings[ "{$prefix}_icon" ] ?? '';
+		$url        = $settings[ "{$prefix}_url" ] ?? [];
+		$variant    = $settings[ "{$prefix}_variant" ] ?? 'primary';
+		$size       = $settings[ "{$prefix}_size" ] ?? 'lg';
+		$icon       = $settings[ "{$prefix}_icon" ] ?? '';
+
+		$type_classes = [ 'lg' => 'text-subtitle-lg', 'md' => 'text-subtitle-md', 'sm' => 'text-subtitle-sm' ];
+		$type_class   = $type_classes[ $size ] ?? 'text-subtitle-lg';
 
 		$href = ! empty( $url['url'] ) ? esc_url( $url['url'] ) : '#';
 
@@ -79,8 +83,8 @@ trait Hello_Child_Button_Controls {
 			$attrs .= ' target="_blank"';
 		}
 		$rel = array_filter( [
-			! empty( $url['nofollow'] )    ? 'nofollow'  : '',
-			! empty( $url['is_external'] ) ? 'noopener'  : '',
+			! empty( $url['nofollow'] )    ? 'nofollow'   : '',
+			! empty( $url['is_external'] ) ? 'noopener'   : '',
 			! empty( $url['is_external'] ) ? 'noreferrer' : '',
 		] );
 		if ( $rel ) {
@@ -90,10 +94,11 @@ trait Hello_Child_Button_Controls {
 		$svg = $icon ? raven_get_icon( $icon ) : '';
 
 		return sprintf(
-			'<a href="%s" class="btn btn-%s btn-%s"%s>%s%s</a>',
+			'<a href="%s" class="btn btn-%s btn-%s %s"%s>%s%s</a>',
 			$href,
 			esc_attr( $variant ),
 			esc_attr( $size ),
+			esc_attr( $type_class ),
 			$attrs,
 			esc_html( $text ),
 			$svg

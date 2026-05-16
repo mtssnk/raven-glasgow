@@ -1,5 +1,10 @@
 /* ── Headings — Cubano Sharp ──────────────────────────────────────────────── */
 
+h1, h2, h3, h4, h5, h6{
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
 @utility text-heading-2xl {
   font-family: var(--font-heading);
   font-size: clamp(4.0311rem, 3.2418rem + 3.508vw, 5.9605rem);
@@ -52,7 +57,7 @@
 
 @utility text-subtitle-xl {
   font-family: var(--font-body);
-  font-size: 1.375rem !important;
+  font-size: clamp(1.25rem, 1.1989rem + 0.2273vw, 1.375rem); // 
   font-weight: 400;
   line-height: 1.18;
   letter-spacing: 0.084em;
@@ -60,7 +65,7 @@
 
 @utility text-subtitle-lg {
   font-family: var(--font-body);
-  font-size: 1.125rem !important;
+  font-size: clamp(1rem, 0.9489rem + 0.2273vw, 1.125rem);
   font-weight: 700;
   line-height: 1.11;
   letter-spacing: 0.084em;
@@ -69,7 +74,7 @@
 
 @utility text-subtitle-md {
   font-family: var(--font-body);
-  font-size: 1rem !important;
+  font-size: clamp(0.875rem, 0.8239rem + 0.2273vw, 1rem);
   font-weight: 700;
   line-height: 1.13;
   letter-spacing: 0.084em;
@@ -78,7 +83,7 @@
 
 @utility text-subtitle-sm {
   font-family: var(--font-body);
-  font-size: 0.875rem !important;
+  font-size: 0.875rem;
   font-weight: 700;
   line-height: 1.14;
   letter-spacing: 0.084em;
@@ -87,9 +92,46 @@
 
 @utility text-subtitle-xs {
   font-family: var(--font-body);
-  font-size: 0.75rem !important;
+  font-size: 0.75rem;
   font-weight: 700;
   line-height: 1.17;
   letter-spacing: 0.084em;
   text-transform: uppercase;
+}
+
+/* ── Body — Interstate ───────────────────────────────────────────────── */
+
+@utility text-body-xl {
+  font-family: var(--font-body);
+  font-size: clamp(1.25rem, 1.1989rem + 0.2273vw, 1.375rem); // 
+  font-weight: 400;
+  line-height: 1.45;
+}
+
+@utility text-body-lg {
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 0.9489rem + 0.2273vw, 1.125rem);
+  font-weight: 400;
+  line-height: 1.42;
+}
+
+@utility text-body-md {
+  font-family: var(--font-body);
+  font-size: clamp(0.875rem, 0.8239rem + 0.2273vw, 1rem);
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+@utility text-body-sm {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+@utility text-body-xs {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 400;
+  line-height: 1.35;
 }

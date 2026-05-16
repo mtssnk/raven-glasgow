@@ -2,8 +2,6 @@
   @apply inline-flex items-center justify-center focus:outline-none;
   gap: 0.5em;
   border-radius: 7px;
-  font-weight: 700;
-  text-transform: uppercase;
   & svg {
     width: 1em;
     height: 1em;
@@ -14,17 +12,14 @@
 
 @utility btn-lg {
   padding: 1em 1.4em;
-  @apply text-subtitle-lg;
 }
 
 @utility btn-md {
   padding: 1em 1.3em;
-  @apply text-subtitle-md;
 }
 
 @utility btn-sm {
   padding: 1em 1.2em;
-  @apply text-subtitle-sm;
 }
 
 @utility btn-primary {

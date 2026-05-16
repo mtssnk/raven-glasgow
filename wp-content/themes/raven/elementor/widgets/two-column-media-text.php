@@ -218,18 +218,20 @@ class Hello_Child_Two_Column_Media_Text extends \Elementor\Widget_Base {
 
 	protected function render(): void {
 		$settings       = $this->get_settings_for_display();
-		$reverse        = 'right' === $settings['media_position'] ? 'md:flex-row-reverse' : '';
+		$media_reversed = 'right' === $settings['media_position'];
+		$media_order    = $media_reversed ? 'md:order-last' : '';
+		$text_order     = $media_reversed ? 'md:order-first' : '';
 		$text_valign    = $settings['text_valign'] ?? 'self-start';
 		$tag            = \Elementor\Utils::validate_html_tag( $settings['heading_tag'] );
 		?>
 		<div class="section-two-column-media-text container">
-			<div class="grid grid-cols-12 <?php echo esc_attr( $reverse ); ?>">
+			<div class="grid grid-cols-12">
 
-				<div class="col-span-12 md:col-span-6">
+				<div class="col-span-12 md:col-span-6 <?php echo esc_attr( $media_order ); ?>">
 					<?php $this->render_media( $settings ); ?>
 				</div>
 
-				<div class="col-span-12 md:col-span-6 <?php echo esc_attr( $text_valign ); ?>">
+				<div class="col-span-12 md:col-span-6 <?php echo esc_attr( $text_order ); ?> <?php echo esc_attr( $text_valign ); ?>">
 					<div class="space-y-xl">
 						<<?php echo $tag; ?> class="text-heading-xl"><?php echo esc_html( $settings['heading'] ); ?></<?php echo $tag; ?>>
 

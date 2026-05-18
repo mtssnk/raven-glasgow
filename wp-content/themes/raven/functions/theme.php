@@ -52,6 +52,12 @@ add_action('admin_init', function () {
     }
 });
 
+// Resttrict block formats in TinyMCE to only allow paragraphs and headings (h2-h6)
+add_filter( 'tiny_mce_before_init', function ( $settings ) {
+	$settings['block_formats'] = 'Paragraph=p;Heading 2=h2;Heading 3=h3;Heading 4=h4;Heading 5=h5;Heading 6=h6;Preformatted=pre';
+	return $settings;
+} );
+
 // Close comments on the front-end
 add_filter('comments_open', '__return_false', 20, 2);
 add_filter('pings_open', '__return_false', 20, 2);

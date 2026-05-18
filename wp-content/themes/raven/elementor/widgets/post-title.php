@@ -4,12 +4,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-class Hello_Child_Widget_Heading extends \Elementor\Widget_Heading {
+class Hello_Child_Widget_Post_Title extends \ElementorPro\Modules\ThemeBuilder\Widgets\Post_Title {
 
 	protected function register_controls(): void {
 		parent::register_controls();
 
-		// Remove all Style tab controls so Elementor does not generate typography
+		// Remove Style tab controls to prevent Elementor generating typography
 		// CSS that would override the theme's heading utilities.
 		foreach ( [
 			'section_title_style',
@@ -22,7 +22,11 @@ class Hello_Child_Widget_Heading extends \Elementor\Widget_Heading {
 		}
 	}
 
-	protected function render(): void {
+	public function render(): void {
+		if ( ! $this->should_show_page_title() ) {
+			return;
+		}
+
 		$settings = $this->get_settings_for_display();
 
 		if ( '' === $settings['title'] ) {
@@ -31,7 +35,7 @@ class Hello_Child_Widget_Heading extends \Elementor\Widget_Heading {
 
 		$tag = \Elementor\Utils::validate_html_tag( $settings['header_size'] );
 		?>
-		<<?php echo $tag; ?>><?php echo raven_format_heading( $settings['title'] ); ?></<?php echo $tag; ?>>
+		<<?php echo $tag; ?> class="py-lg container"><?php echo raven_format_heading( $settings['title'] ); ?></<?php echo $tag; ?>>
 		<?php
 	}
 }

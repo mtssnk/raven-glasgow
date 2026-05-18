@@ -2,7 +2,7 @@
 
 @layer base {
   h1, h2, h3, h4, h5, h6 {
-    margin-block: 0;
+    margin-block: 0;    
   }
 }
 
@@ -136,7 +136,6 @@
   font-weight: 400;
   line-height: 1.35;
 }
-
 h1{
   @apply text-heading-2xl;
 }
@@ -147,4 +146,41 @@ h2{
 
 h3{
   @apply text-heading-lg;
+}
+
+h4{
+  @apply text-heading-md;
+}
+
+h5{
+  @apply text-heading-sm;
+}
+
+.freak-mce{
+  h2{
+    @apply text-heading-lg;
+  }
+  
+  h3{
+    @apply text-heading-md;
+  }
+  
+  h4, h5{
+    @apply text-heading-sm;
+  }
+  h1, h2, h3, h4, h5, h5, p, ol, ul{
+    margin-block-start: 2rem;
+    margin-block-end: 2rem;  
+  }
+  p{
+    color: --var(--color-fire);
+  }
+  ul{
+    list-style: disc;
+    padding-left: 1.5em;
+  }
+  ol{
+    list-style: decimal;
+    padding-left: 1.5em;
+  }
 }

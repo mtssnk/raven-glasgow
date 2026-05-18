@@ -17,6 +17,7 @@ function hello_child_register_elementor_widgets( $widgets_manager ) {
 	// and overrides render(). After requiring the file, unregister the original
 	// by its name (the string returned by the original widget's get_name()) and
 	// register the replacement class.
+		// Core widget overrides (Elementor core registers at priority 5).
 	$overrides = [
 		'heading' => [ $widgets_dir . 'heading.php', 'Hello_Child_Widget_Heading' ],
 	];
@@ -43,6 +44,25 @@ function hello_child_register_elementor_widgets( $widgets_manager ) {
 	}
 }
 add_action( 'elementor/widgets/register', 'hello_child_register_elementor_widgets' );
+
+// Elementor Pro registers its theme-builder widgets at priority 11, so Pro widget
+// overrides must run after that.
+add_action( 'elementor/widgets/register', function ( $widgets_manager ) {
+	$widgets_dir = get_stylesheet_directory() . '/elementor/widgets/';
+
+	$pro_overrides = [
+		'theme-post-title'   => [ $widgets_dir . 'post-title.php',   'Hello_Child_Widget_Post_Title'   ],
+		'theme-post-content' => [ $widgets_dir . 'post-content.php', 'Hello_Child_Widget_Post_Content' ],
+	];
+
+	foreach ( $pro_overrides as $widget_name => [ $file, $class ] ) {
+		if ( file_exists( $file ) ) {
+			require_once $file;
+			$widgets_manager->unregister( $widget_name );
+			$widgets_manager->register( new $class() );
+		}
+	}
+}, 20 );
 
 // Disable element cache in non-production environments.
 if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {

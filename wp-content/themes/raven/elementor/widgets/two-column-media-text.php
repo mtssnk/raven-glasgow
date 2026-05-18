@@ -7,6 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Hello_Child_Two_Column_Media_Text extends \Elementor\Widget_Base {
 
 	use Hello_Child_Button_Controls;
+	use Hello_Child_Padding_Controls;
 
 	public function get_name() {
 		return 'hello_child_two_column_media_text';
@@ -37,7 +38,14 @@ class Hello_Child_Two_Column_Media_Text extends \Elementor\Widget_Base {
 		// ── Layout ───────────────────────────────────────────────────────────
 
 		$this->start_controls_section( 'section_layout', [
-			'label' => esc_html__( 'Layout', 'raven' ),
+			'label' => esc_html__( 'Options', 'raven' ),
+		] );
+
+
+		$this->add_control( 'id', [
+			'label' => esc_html__( 'ID', 'raven' ),
+			'type' => \Elementor\Controls_Manager::TEXT,
+			'description' => esc_html__( 'Add an optional ID (no spaces) for anchor links, must be unique on the page.', 'raven' ),
 		] );
 
 		$this->add_control( 'media_position', [
@@ -56,6 +64,12 @@ class Hello_Child_Two_Column_Media_Text extends \Elementor\Widget_Base {
 			'default' => 'left',
 			'toggle'  => false,
 		] );
+
+		$this->add_control( 'spacing_divider', [
+			'type' => \Elementor\Controls_Manager::DIVIDER,
+		] );
+
+		$this->register_padding_controls( 'spacing' );
 
 		$this->end_controls_section();
 
@@ -223,9 +237,10 @@ class Hello_Child_Two_Column_Media_Text extends \Elementor\Widget_Base {
 		$text_order     = $media_reversed ? 'md:order-first' : '';
 		$text_valign    = $settings['text_valign'] ?? 'self-start';
 		$tag            = \Elementor\Utils::validate_html_tag( $settings['heading_tag'] );
+		$padding        = $this->get_padding_classes( $settings, 'spacing' );
 		?>
-		<div class="section-two-column-media-text container">
-			<div class="grid grid-cols-12">
+		<div class="section-two-column-media-text bg-night <?php echo esc_attr( $padding ); ?>" id="<?php echo esc_attr( $settings['id'] ?? '' ); ?>">
+			<div class="grid grid-cols-12 container">
 
 				<div class="col-span-12 md:col-span-6 <?php echo esc_attr( $media_order ); ?>">
 					<?php $this->render_media( $settings ); ?>

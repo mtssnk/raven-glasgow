@@ -6,6 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 require_once get_stylesheet_directory() . '/elementor/includes/icons.php';
 require_once get_stylesheet_directory() . '/elementor/traits/trait-button.php';
+require_once get_stylesheet_directory() . '/elementor/traits/trait-padding.php';
 
 function hello_child_register_elementor_widgets( $widgets_manager ) {
 	$widgets_dir = get_stylesheet_directory() . '/elementor/widgets/';

@@ -31,29 +31,101 @@
   /* --font-heading: var(--e-global-typography-primary-font-family);
   --font-body: var(--e-global-typography-text-font-family); */
 
-  --space-4xs: clamp(0.2812rem, 0.2685rem + 0.0568vw, 0.3125rem); /* 4.5px → 5px */
-  --space-3xs: clamp(0.4219rem, 0.4027rem + 0.0852vw, 0.4688rem); /* 6.75px → 7.5px */
-  --space-2xs: clamp(0.5625rem, 0.5369rem + 0.1136vw, 0.625rem); /* 9px → 10px */
-  --space-xs: clamp(0.7031rem, 0.6712rem + 0.142vw, 0.7812rem); /* 11.25px → 12.5px */
-  --space-sm: clamp(0.8438rem, 0.8054rem + 0.1705vw, 0.9375rem); /* 13.5px → 15px */
-  --space-md: clamp(0.9844rem, 0.9396rem + 0.1989vw, 1.0938rem); /* 15.75px → 17.5px */
-  --space-lg: clamp(1.125rem, 1.0739rem + 0.2273vw, 1.25rem); /* 18px → 20px */
-  --space-2lg: clamp(1.4062rem, 1.3423rem + 0.2841vw, 1.5625rem); /* 22.5px → 25px */
-  --space-3lg: clamp(1.6875rem, 1.6108rem + 0.3409vw, 1.875rem); /* 27px → 30px */
-  --space-4lg: clamp(1.9688rem, 1.8793rem + 0.3977vw, 2.1875rem); /* 31.5px → 35px */
-  --space-xl: clamp(2.25rem, 2.1477rem + 0.4545vw, 2.5rem); /* 36px → 40px */
-  --space-2xl: clamp(2.8125rem, 2.6847rem + 0.5682vw, 3.125rem); /* 45px → 50px */
-  --space-3xl: clamp(3.375rem, 3.2216rem + 0.6818vw, 3.75rem); /* 54px → 60px */
-  --space-4xl: clamp(3.9375rem, 3.7585rem + 0.7955vw, 4.375rem); /* 63px → 70px */
-  --space-5xl: clamp(4.5rem, 4.2955rem + 0.9091vw, 5rem); /* 72px → 80px */
-  --space-6xl: clamp(5.625rem, 5.3693rem + 1.1364vw, 6.25rem); /* 90px → 100px */
-  --space-7xl: clamp(6.75rem, 6.4432rem + 1.3636vw, 7.5rem); /* 108px → 120px */
-  --space-8xl: clamp(8.4375rem, 8.054rem + 1.7045vw, 9.375rem); /* 135px → 150px */
+  --spacing-4xs: clamp(
+    0.2812rem,
+    0.2685rem + 0.0568vw,
+    0.3125rem
+  ); /* 4.5px → 5px */
+  --spacing-3xs: clamp(
+    0.4219rem,
+    0.4027rem + 0.0852vw,
+    0.4688rem
+  ); /* 6.75px → 7.5px */
+  --spacing-2xs: clamp(
+    0.5625rem,
+    0.5369rem + 0.1136vw,
+    0.625rem
+  ); /* 9px → 10px */
+  --spacing-xs: clamp(
+    0.7031rem,
+    0.6712rem + 0.142vw,
+    0.7812rem
+  ); /* 11.25px → 12.5px */
+  --spacing-sm: clamp(
+    0.8438rem,
+    0.8054rem + 0.1705vw,
+    0.9375rem
+  ); /* 13.5px → 15px */
+  --spacing-md: clamp(
+    0.9844rem,
+    0.9396rem + 0.1989vw,
+    1.0938rem
+  ); /* 15.75px → 17.5px */
+  --spacing-lg: clamp(
+    1.125rem,
+    1.0739rem + 0.2273vw,
+    1.25rem
+  ); /* 18px → 20px */
+  --spacing-2lg: clamp(
+    1.4062rem,
+    1.3423rem + 0.2841vw,
+    1.5625rem
+  ); /* 22.5px → 25px */
+  --spacing-3lg: clamp(
+    1.6875rem,
+    1.6108rem + 0.3409vw,
+    1.875rem
+  ); /* 27px → 30px */
+  --spacing-4lg: clamp(
+    1.9688rem,
+    1.8793rem + 0.3977vw,
+    2.1875rem
+  ); /* 31.5px → 35px */
+  --spacing-xl: clamp(2.25rem, 2.1477rem + 0.4545vw, 2.5rem); /* 36px → 40px */
+  --spacing-2xl: clamp(
+    2.8125rem,
+    2.6847rem + 0.5682vw,
+    3.125rem
+  ); /* 45px → 50px */
+  --spacing-3xl: clamp(
+    3.375rem,
+    3.2216rem + 0.6818vw,
+    3.75rem
+  ); /* 54px → 60px */
+  --spacing-4xl: clamp(
+    3.9375rem,
+    3.7585rem + 0.7955vw,
+    4.375rem
+  ); /* 63px → 70px */
+  --spacing-5xl: clamp(4.5rem, 4.2955rem + 0.9091vw, 5rem); /* 72px → 80px */
+  --spacing-6xl: clamp(
+    5.625rem,
+    5.3693rem + 1.1364vw,
+    6.25rem
+  ); /* 90px → 100px */
+  --spacing-7xl: clamp(
+    6.75rem,
+    6.4432rem + 1.3636vw,
+    7.5rem
+  ); /* 108px → 120px */
+  --spacing-8xl: clamp(
+    8.4375rem,
+    8.054rem + 1.7045vw,
+    9.375rem
+  ); /* 135px → 150px */
 }
 
 :root {
   --gutter: 32px;
   --content-max: 1216px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 @layer base {

@@ -25,6 +25,7 @@ trait Hello_Child_Button_Controls {
 		$this->add_control( "{$prefix}_url", [
 			'label'   => esc_html__( 'URL / Anchor', 'raven' ),
 			'type'    => \Elementor\Controls_Manager::URL,
+			'description' => esc_html__( 'Add a link for the button. Can be a URL or an anchor (e.g. #section-id).', 'raven' ),
 			'dynamic' => [ 'active' => true ],
 		] );
 

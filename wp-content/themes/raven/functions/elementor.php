@@ -5,6 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 require_once get_stylesheet_directory() . '/elementor/includes/icons.php';
+require_once get_stylesheet_directory() . '/elementor/includes/helpers.php';
 require_once get_stylesheet_directory() . '/elementor/traits/trait-button.php';
 require_once get_stylesheet_directory() . '/elementor/traits/trait-padding.php';
 

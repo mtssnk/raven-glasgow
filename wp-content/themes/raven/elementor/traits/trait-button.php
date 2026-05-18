@@ -48,7 +48,7 @@ trait Hello_Child_Button_Controls {
 				'md' => esc_html__( 'Medium', 'raven' ),
 				'sm' => esc_html__( 'Small', 'raven' ),
 			],
-			'default' => 'lg',
+			'default' => 'md',
 		] );
 
 		$this->add_control( "{$prefix}_icon", [

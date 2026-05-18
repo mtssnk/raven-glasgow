@@ -150,3 +150,7 @@ body {
   margin-inline: auto;
   padding-inline: var(--gutter);
 }
+
+img.object-cover {
+  height: 100% !important;
+}

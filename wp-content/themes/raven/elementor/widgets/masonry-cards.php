@@ -134,7 +134,7 @@ class Hello_Child_Masonry_Cards extends \Elementor\Widget_Base {
 			: '';
 
 		$label = $heading ? sprintf(
-			'<div class="absolute bottom-0 left-0 flex items-end gap-2 px-3 py-2 bg-birch text-night %1$s">
+			'<div class="absolute bottom-0 left-0 flex items-end gap-2 px-3 py-2 bg-white text-night %1$s">
 				<span class="inline-flex">%2$s</span>
 				<span class="shrink-0 w-[1em] h-[1em] inline-flex items-center justify-center %3$s">%4$s</span>
 			</div>',

@@ -31,6 +31,7 @@ function hello_child_register_elementor_widgets( $widgets_manager ) {
 	// Custom new widgets: [ file, class ]
 	$custom_widgets = [
 		[ $widgets_dir . 'two-column-media-text.php', 'Hello_Child_Two_Column_Media_Text' ],
+		[ $widgets_dir . 'masonry-cards.php',         'Hello_Child_Masonry_Cards'         ],
 	];
 
 	foreach ( $custom_widgets as [ $file, $class ] ) {

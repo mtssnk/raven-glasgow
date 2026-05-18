@@ -240,7 +240,7 @@ class Hello_Child_Two_Column_Media_Text extends \Elementor\Widget_Base {
 				</div>
 
 				<div class="col-span-12 md:col-span-6 <?php echo esc_attr( $text_order ); ?> <?php echo esc_attr( $text_valign ); ?>">
-					<div class="space-y-xl">
+					<div class="space-y-xl max-w-[29em] mx-auto">
 						<<?php echo $tag; ?> class="text-heading-xl"><?php echo raven_format_heading( $settings['heading'] ); ?></<?php echo $tag; ?>>
 
 						<div class="text-body-lg text-cloud"><?php echo wp_kses_post( $settings['body'] ); ?></div>

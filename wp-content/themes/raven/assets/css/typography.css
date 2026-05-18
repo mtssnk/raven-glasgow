@@ -136,3 +136,15 @@
   font-weight: 400;
   line-height: 1.35;
 }
+
+h1{
+  @apply text-heading-2xl;
+}
+
+h2{
+  @apply text-heading-xl;
+}
+
+h3{
+  @apply text-heading-lg;
+}

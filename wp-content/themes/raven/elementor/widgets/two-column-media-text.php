@@ -198,21 +198,14 @@ class Hello_Child_Two_Column_Media_Text extends \Elementor\Widget_Base {
 		$ratio_class = $this->get_aspect_ratio_class( $settings['media_aspect_ratio'] ?? 'auto' );
 
 		if ( 'image' === $settings['media_type'] ) {
-			$url = $settings['image']['url'] ?? '';
-			$alt = get_post_meta( $settings['image']['id'] ?? 0, '_wp_attachment_image_alt', true );
-			if ( ! $url ) {
+			$id = $settings['image']['id'] ?? 0;
+			if ( ! $id ) {
 				return;
 			}
-			// With a ratio: fixed crop. Without: natural image height.
 			$classes = $ratio_class
 				? "w-full object-cover {$ratio_class}"
 				: 'w-full h-auto';
-			printf(
-				'<img src="%s" alt="%s" class="%s">',
-				esc_url( $url ),
-				esc_attr( $alt ),
-				esc_attr( $classes )
-			);
+			echo wp_get_attachment_image( $id, 'raven-lg', false, [ 'class' => $classes ] );
 			return;
 		}
 

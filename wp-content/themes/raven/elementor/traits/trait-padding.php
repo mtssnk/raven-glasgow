@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 trait Hello_Child_Padding_Controls {
 
-	protected function register_padding_controls( string $prefix = 'spacing' ): void {
+	protected function register_padding_controls( string $prefix = 'spacing', string $default_top = '6xl', string $default_bottom = '6xl' ): void {
 		$options = [
 			'none' => esc_html__( 'None', 'raven' ),
 			'md'   => esc_html__( 'MD  (13–15px)', 'raven' ),
@@ -34,14 +34,14 @@ trait Hello_Child_Padding_Controls {
 			'label'   => esc_html__( 'Padding Top', 'raven' ),
 			'type'    => \Elementor\Controls_Manager::SELECT,
 			'options' => $options,
-			'default' => '6xl',
+			'default' => $default_top,
 		] );
 
 		$this->add_control( "{$prefix}_bottom", [
 			'label'   => esc_html__( 'Padding Bottom', 'raven' ),
 			'type'    => \Elementor\Controls_Manager::SELECT,
 			'options' => $options,
-			'default' => '6xl',
+			'default' => $default_bottom,
 		] );
 	}
 

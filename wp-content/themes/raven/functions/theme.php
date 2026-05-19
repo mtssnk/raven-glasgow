@@ -8,6 +8,10 @@ add_action( 'after_setup_theme', function () {
 	add_image_size( 'raven-sm',  640 );
 	add_image_size( 'raven-md', 1024 );
 	add_image_size( 'raven-lg', 1440 );
+
+	register_nav_menus( [
+		'primary' => esc_html__( 'Primary Navigation', 'raven' ),
+	] );
 } );
 
 function hello_child_register_scripts() {
@@ -87,3 +91,10 @@ add_action('init', function () {
         remove_action('admin_bar_menu', 'wp_admin_bar_comments_menu', 60);
     }
 });
+
+add_filter( 'nav_menu_link_attributes', function ( $atts, $item, $args, $depth ) {
+    if ( in_array( 'is-button', (array) $item->classes, true ) ) {
+        $atts['class'] = trim( ( $atts['class'] ?? '' ) . ' btn btn-primary btn-sm text-subtitle-sm' );
+    }
+    return $atts;
+}, 10, 4 );

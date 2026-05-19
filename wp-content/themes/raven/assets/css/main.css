@@ -8,6 +8,7 @@
 /* Tell Tailwind to scan PHP widget and function files for class names */
 @source "../../elementor";
 @source "../../functions";
+@source "../../template-parts";
 
 /* Map Tailwind design tokens to Elementor's global CSS custom properties.
    Change colours/fonts in Elementor > Site Settings and Tailwind picks them up. */
@@ -154,4 +155,22 @@ body {
 
 img.object-cover {
   height: 100% !important;
+}
+
+.js-freak-header {
+  transition: opacity 0.3s ease;
+}
+
+body:has(.e-con-inner > .elementor-widget-homepage-hero:first-child)
+  .js-freak-header,
+body:has(.e-con > .elementor-widget-homepage-hero:first-child)
+  .js-freak-header {
+  opacity: 0;
+}
+
+[data-elementor-type]
+  > .elementor-element:first-child
+  > :is(.e-con-inner, .e-con)
+  > .elementor-widget:first-child:not(.elementor-widget-homepage-hero) {
+  padding-top: 80px;
 }

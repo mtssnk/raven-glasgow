@@ -281,7 +281,7 @@ class Hello_Child_Widget_Homepage_Hero extends \Elementor\Widget_Base {
 
 		$current_path = strtok( $_SERVER['REQUEST_URI'] ?? '/', '?' );
 		?>
-		<div class="hero relative overflow-hidden min-h-dvh w-full flex items-stretch">
+		<div class="homepage-hero relative overflow-hidden min-h-dvh w-full flex items-stretch">
 
 			<?php // ── Background ─────────────────────────────────────────── ?>
 
@@ -355,7 +355,7 @@ class Hello_Child_Widget_Homepage_Hero extends \Elementor\Widget_Base {
 
 			<?php // ── Foreground ─────────────────────────────────────────── ?>
 
-			<div class="container relative z-2 py-xl flex items-stretch flex-col">
+			<div class="container relative z-2 py-xl lg:py-3xl flex items-stretch flex-col">
 
 				<div class="grid gap-0 h-full">
 

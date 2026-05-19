@@ -361,7 +361,7 @@ class Hello_Child_Widget_Homepage_Hero extends \Elementor\Widget_Base {
 
 				<?php // ── Nav panel ───────────────────────────────────── ?>
 				<?php if ( $nav_links ) : ?>
-					<div class="hidden md:block col-span-4 hero-nav">
+					<div class="hidden md:block col-span-4 hero-nav xl:border-r-2 border-birch/25">
 						<div class="flex items-stretch js-homepage-hero-nav opacity-0">
 							<figure class="js-homepage-hero-logo-wrapper [&_svg]:h-full [&_svg]:w-auto [&_svg]:shrink-0 [&_svg]:aspect-39/244">
 								<?php echo raven_get_icon( 'logo-vertical' ); ?>
@@ -389,11 +389,11 @@ class Hello_Child_Widget_Homepage_Hero extends \Elementor\Widget_Base {
 
 					<?php // ── Heading + CTAs ──────────────────────────────── ?>
 
-					<div class="col-span-12 md:col-span-8 lg:px-xl">
+					<div class="col-span-12 md:col-span-8 lg:px-xl xl:px-5xl">
 						<div class="max-w-[800px] h-full mx-auto flex flex-col justify-between">
 							<div class="pb-2xl flex flex-row gap-[7%] sm:gap-2xl">
 								<?php if ( $heading_text ) : ?>
-									<div class="aspect-39/244 md:hidden pt-[2%] h-[94.2%]">
+									<div class="aspect-39/244 md:hidden pt-[2%] h-[95%]">
 											<?php echo raven_get_icon( 'logo-vertical' ); ?>
 									</div>
 									<<?php echo $heading_tag; ?> class="hero-heading text-heading-2xl max-w-[5em]">

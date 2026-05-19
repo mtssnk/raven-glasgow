@@ -359,40 +359,43 @@ class Hello_Child_Widget_Homepage_Hero extends \Elementor\Widget_Base {
 
 				<div class="grid gap-0 h-full">
 
-					<?php // ── Nav panel ───────────────────────────────────── ?>
-					<?php if ( $nav_links ) : ?>
-						<div class="col-span-4 hero-nav">
-							<div class="flex items-stretch js-homepage-hero-nav opacity-0">
-								<figure class="js-homepage-hero-logo-wrapper [&_svg]:h-full [&_svg]:w-auto [&_svg]:shrink-0 [&_svg]:aspect-39/244">
-									<?php echo raven_get_icon( 'logo-vertical' ); ?>
-								</figure>
-								<nav class="flex flex-col gap-md pl-[10%]">
-								<?php foreach ( $nav_links as $link ) :
-									$label     = esc_html( $link['nav_label'] ?? '' );
-									$href      = $link['nav_url']['url'] ?? '';
-									$link_path = parse_url( $href, PHP_URL_PATH );
-									$is_active = $link_path && rtrim( $link_path, '/' ) === rtrim( $current_path, '/' );
-									$external  = ! empty( $link['nav_url']['is_external'] );
+				<?php // ── Nav panel ───────────────────────────────────── ?>
+				<?php if ( $nav_links ) : ?>
+					<div class="hidden md:block col-span-4 hero-nav">
+						<div class="flex items-stretch js-homepage-hero-nav opacity-0">
+							<figure class="js-homepage-hero-logo-wrapper [&_svg]:h-full [&_svg]:w-auto [&_svg]:shrink-0 [&_svg]:aspect-39/244">
+								<?php echo raven_get_icon( 'logo-vertical' ); ?>
+							</figure>
+							<nav class="flex flex-col gap-md pl-[10%]">
+							<?php foreach ( $nav_links as $link ) :
+								$label     = esc_html( $link['nav_label'] ?? '' );
+								$href      = $link['nav_url']['url'] ?? '';
+								$link_path = parse_url( $href, PHP_URL_PATH );
+								$is_active = $link_path && rtrim( $link_path, '/' ) === rtrim( $current_path, '/' );
+								$external  = ! empty( $link['nav_url']['is_external'] );
 
-									if ( ! $label || ! $href ) continue;
-									?>
-									<a
-										href="<?php echo esc_url( $href ); ?>"
-										class="hero-nav__link text-subtitle-md<?php echo $is_active ? ' text-fire font-bold' : ' font-normal'; ?>"
-										<?php echo $external ? 'target="_blank" rel="noopener noreferrer"' : ''; ?>
-									><?php echo $label; ?></a>
-								<?php endforeach; ?>
-								</nav>
-							</div>
+								if ( ! $label || ! $href ) continue;
+								?>
+								<a
+									href="<?php echo esc_url( $href ); ?>"
+									class="hero-nav__link text-subtitle-md<?php echo $is_active ? ' text-fire font-bold' : ' font-normal'; ?>"
+									<?php echo $external ? 'target="_blank" rel="noopener noreferrer"' : ''; ?>
+								><?php echo $label; ?></a>
+							<?php endforeach; ?>
+							</nav>
 						</div>
-					<?php endif; ?>
+					</div>
+				<?php endif; ?>
 
 					<?php // ── Heading + CTAs ──────────────────────────────── ?>
 
-					<div class="col-span-8 px-xl">
+					<div class="col-span-12 md:col-span-8 lg:px-xl">
 						<div class="max-w-[800px] h-full mx-auto flex flex-col justify-between">
-							<div class="pb-2xl">
+							<div class="pb-2xl flex flex-row gap-[7%] sm:gap-2xl">
 								<?php if ( $heading_text ) : ?>
+									<div class="aspect-39/244 md:hidden pt-[2%] h-[94.2%]">
+											<?php echo raven_get_icon( 'logo-vertical' ); ?>
+									</div>
 									<<?php echo $heading_tag; ?> class="hero-heading text-heading-2xl max-w-[5em]">
 										<?php echo raven_format_heading( $heading_text ); ?>
 									</<?php echo $heading_tag; ?>>
@@ -401,19 +404,19 @@ class Hello_Child_Widget_Homepage_Hero extends \Elementor\Widget_Base {
 
 							<div>
 								<hr class="border-t-2 border-birch/25" />
-								<div class="flex flex-row gap-2xl justify-between pt-2xl">								
+								<div class="flex flex-col md:flex-row gap-sm md:gap-2xl justify-between pt-2xl">								
 									<?php
 									$btn1 = $this->render_button( $settings, 'btn1' );
 									$btn2 = $this->render_button( $settings, 'btn2' );
 									if ( $btn1 || $btn2 ) :
 									?>
-									<div class="flex flex-col flex-wrap gap-lg">
+									<div class="flex flex-row md:flex-col flex-wrap gap-lg">
 										<?php echo $btn1; echo $btn2; ?>
 									</div>
 									<?php endif; ?>
 									<?php // ── Address ─────────────────────────────────────────── ?>
-									<div class="flex items-center shrink-0	">
-										<a target="_blank" rel="noopener noreferrer" href="https://maps.app.goo.gl/crP6djxx2x9er6Z76" class="hero-address text-subtitle-xl text-right flex flex-col leading-[1.3]">
+									<div class="flex items-center shrink-0">
+										<a target="_blank" rel="noopener noreferrer" href="https://maps.app.goo.gl/crP6djxx2x9er6Z76" class="hero-address text-subtitle-xl md:text-right flex flex-col leading-[1.3]">
 											<span class="font-bold">81-85</span> 
 											<span class="font-normal">Renfield Street</span> 
 											<span class="font-normal">Glasgow</span> 

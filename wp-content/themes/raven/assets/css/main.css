@@ -150,7 +150,7 @@ body {
   width: 100%;
   max-width: calc(var(--content-max) + var(--gutter) * 2);
   margin-inline: auto;
-  padding-inline: var(--gutter);
+  padding-inline: clamp(1.625rem, 1.4716rem + 0.6818vw, 2rem);
 }
 
 img.object-cover {

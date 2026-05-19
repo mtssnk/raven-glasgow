@@ -1,14 +1,21 @@
 /* ── Headings — Cubano Sharp ──────────────────────────────────────────────── */
 
 @layer base {
-  h1, h2, h3, h4, h5, h6 {
-    margin-block: 0;    
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-block: 0;
   }
 }
 
+/* 360 -> 1240 */
+
 @utility text-heading-2xl {
   font-family: var(--font-heading);
-  font-size: clamp(4.0311rem, 3.2418rem + 3.508vw, 5.9605rem);
+  font-size: clamp(3.125rem, 1.9489rem + 5.2273vw, 6rem); /* 50px → 96px */
   font-weight: 400;
   line-height: 0.91;
   letter-spacing: -0.02em;
@@ -16,7 +23,7 @@
 
 @utility text-heading-xl {
   font-family: var(--font-heading);
-  font-size: clamp(3.3592rem, 2.7828rem + 2.5621vw, 4.7684rem);
+  font-size: clamp(2.875rem, 2.108rem + 3.4091vw, 4.75rem); /* 46px → 76px */
   font-weight: 400;
   line-height: 0.94;
   letter-spacing: -0.02em;
@@ -24,7 +31,7 @@
 
 @utility text-heading-lg {
   font-family: var(--font-heading);
-  font-size: clamp(2.7994rem, 2.384rem + 1.8461vw, 3.8147rem);
+  font-size: clamp(2.5rem, 1.9375rem + 2.5vw, 3.875rem); /* 40px → 62px */
   font-weight: 400;
   line-height: 0.92;
   letter-spacing: -0.02em;
@@ -32,7 +39,7 @@
 
 @utility text-heading-md {
   font-family: var(--font-heading);
-  font-size: clamp(2.3328rem, 2.0387rem + 1.3072vw, 3.0518rem);
+  font-size: clamp(2.125rem, 1.7159rem + 1.8182vw, 3.125rem); /* 34px → 50px */
   font-weight: 400;
   line-height: 0.96;
   letter-spacing: -0.02em;
@@ -40,7 +47,7 @@
 
 @utility text-heading-sm {
   font-family: var(--font-heading);
-  font-size: clamp(1.944rem, 1.7405rem + 0.9044vw, 2.4414rem);
+  font-size: clamp(1.75rem, 1.4432rem + 1.3636vw, 2.5rem); /* 28px → 40px */
   font-weight: 400;
   line-height: 1;
   letter-spacing: -0.02em;
@@ -48,7 +55,7 @@
 
 @utility text-heading-xs {
   font-family: var(--font-heading);
-  font-size: clamp(1.62rem, 1.4837rem + 0.6057vw, 1.9531rem);
+  font-size: clamp(1.5rem, 1.3466rem + 0.6818vw, 1.875rem); /* 24px → 30px */
   font-weight: 400;
   line-height: 0.9;
   letter-spacing: -0.02em;
@@ -58,7 +65,7 @@
 
 @utility text-subtitle-xl {
   font-family: var(--font-body);
-  font-size: clamp(1.25rem, 1.1989rem + 0.2273vw, 1.375rem); 
+  font-size: clamp(1.25rem, 1.1989rem + 0.2273vw, 1.375rem); /* 20px → 22px */
   font-weight: 400;
   line-height: 1.18;
   letter-spacing: 0.084em;
@@ -67,7 +74,7 @@
 
 @utility text-subtitle-lg {
   font-family: var(--font-body);
-  font-size: clamp(1rem, 0.9489rem + 0.2273vw, 1.125rem);
+  font-size: clamp(1rem, 0.9489rem + 0.2273vw, 1.125rem); /* 16px → 18px */
   font-weight: 700;
   line-height: 1.11;
   letter-spacing: 0.084em;
@@ -76,7 +83,7 @@
 
 @utility text-subtitle-md {
   font-family: var(--font-body);
-  font-size: clamp(0.875rem, 0.8239rem + 0.2273vw, 1rem);
+  font-size: clamp(0.875rem, 0.8239rem + 0.2273vw, 1rem); /* 14px → 16px */
   font-weight: 700;
   line-height: 1.13;
   letter-spacing: 0.084em;
@@ -85,7 +92,7 @@
 
 @utility text-subtitle-sm {
   font-family: var(--font-body);
-  font-size: 0.875rem;
+  font-size: 0.875rem; /* 14px fixed */
   font-weight: 700;
   line-height: 1.14;
   letter-spacing: 0.084em;
@@ -94,7 +101,7 @@
 
 @utility text-subtitle-xs {
   font-family: var(--font-body);
-  font-size: 0.75rem;
+  font-size: 0.75rem; /* 12px fixed */
   font-weight: 700;
   line-height: 1.17;
   letter-spacing: 0.084em;
@@ -105,85 +112,94 @@
 
 @utility text-body-xl {
   font-family: var(--font-body);
-  font-size: clamp(1.25rem, 1.1989rem + 0.2273vw, 1.375rem); // 
+  font-size: clamp(1.25rem, 1.1989rem + 0.2273vw, 1.375rem); /* 20px → 22px */
   font-weight: 400;
   line-height: 1.45;
 }
 
 @utility text-body-lg {
   font-family: var(--font-body);
-  font-size: clamp(1rem, 0.9489rem + 0.2273vw, 1.125rem);
+  font-size: clamp(1rem, 0.9489rem + 0.2273vw, 1.125rem); /* 16px → 18px */
   font-weight: 400;
   line-height: 1.42;
 }
 
 @utility text-body-md {
   font-family: var(--font-body);
-  font-size: clamp(0.875rem, 0.8239rem + 0.2273vw, 1rem);
+  font-size: clamp(0.875rem, 0.8239rem + 0.2273vw, 1rem); /* 14px → 16px */
   font-weight: 400;
   line-height: 1.4;
 }
 
 @utility text-body-sm {
   font-family: var(--font-body);
-  font-size: 0.875rem;
+  font-size: 0.875rem; /* 14px fixed */
   font-weight: 400;
   line-height: 1.4;
 }
 
 @utility text-body-xs {
   font-family: var(--font-body);
-  font-size: 0.75rem;
+  font-size: 0.75rem; /* 12px fixed */
   font-weight: 400;
   line-height: 1.35;
 }
-h1{
+h1 {
   @apply text-heading-2xl;
 }
 
-h2{
+h2 {
   @apply text-heading-xl;
 }
 
-h3{
+h3 {
   @apply text-heading-lg;
 }
 
-h4{
+h4 {
   @apply text-heading-md;
 }
 
-h5{
+h5 {
   @apply text-heading-sm;
 }
 
-.freak-mce{
-  h2{
+.freak-mce {
+  h2 {
     @apply text-heading-lg;
   }
-  
-  h3{
+
+  h3 {
     @apply text-heading-md;
   }
-  
-  h4, h5{
+
+  h4,
+  h5 {
     @apply text-heading-sm;
   }
-  h1, h2, h3, h4, h5, h5, p, ol, ul{
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h5,
+  p,
+  ol,
+  ul {
     margin-block-start: 2rem;
-    margin-block-end: 2rem;  
+    margin-block-end: 2rem;
   }
-  :first-child{
+  :first-child {
     margin-block-start: 0;
   }
-  p{
+  p {
     color: --var(--color-fire);
   }
-  ul{
+  ul {
     list-style: disc;
     padding-left: 1.5em;
   }
-  ol{
+  ol {
     list-style: decimal;
     padding-left: 1.5em;
   }

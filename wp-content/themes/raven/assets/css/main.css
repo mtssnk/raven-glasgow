@@ -3,6 +3,7 @@
 @import "tailwindcss/utilities";
 @import "./typography.css";
 @import "./button.css";
+@import "./homepage-hero.css";
 
 /* Tell Tailwind to scan PHP widget and function files for class names */
 @source "../../elementor";

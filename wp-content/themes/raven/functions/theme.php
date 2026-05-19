@@ -10,6 +10,17 @@ add_action( 'after_setup_theme', function () {
 	add_image_size( 'raven-lg', 1440 );
 } );
 
+function hello_child_register_scripts() {
+	wp_register_script(
+		'raven-homepage-hero',
+		get_stylesheet_directory_uri() . '/assets/js/homepage-hero.js',
+		[],
+		filemtime( get_stylesheet_directory() . '/assets/js/homepage-hero.js' ),
+		[ 'strategy' => 'defer' ]
+	);
+}
+add_action( 'wp_enqueue_scripts', 'hello_child_register_scripts' );
+
 function hello_child_enqueue_styles() {
 	wp_enqueue_style(
 		'raven-adobe-fonts',

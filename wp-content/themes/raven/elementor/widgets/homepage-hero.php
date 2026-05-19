@@ -4,10 +4,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-// Tailwind safelist — dynamic class names used in render():
-// btn-primary btn-light btn-dark
-
 class Hello_Child_Widget_Homepage_Hero extends \Elementor\Widget_Base {
+
+	use Hello_Child_Button_Controls;
 
 	public function get_name(): string {
 		return 'homepage-hero';
@@ -202,57 +201,13 @@ class Hello_Child_Widget_Homepage_Hero extends \Elementor\Widget_Base {
 			'type' => \Elementor\Controls_Manager::DIVIDER,
 		] );
 
-		$this->add_control( 'btn1_label', [
-			'label'       => esc_html__( 'Button 1 Label', 'raven' ),
-			'type'        => \Elementor\Controls_Manager::TEXT,
-			'placeholder' => esc_html__( 'e.g. Book a Table', 'raven' ),
-		] );
-
-		$this->add_control( 'btn1_url', [
-			'label'     => esc_html__( 'Button 1 URL', 'raven' ),
-			'type'      => \Elementor\Controls_Manager::URL,
-			'condition' => [ 'btn1_label!' => '' ],
-		] );
-
-		$this->add_control( 'btn1_style', [
-			'label'     => esc_html__( 'Button 1 Style', 'raven' ),
-			'type'      => \Elementor\Controls_Manager::SELECT,
-			'options'   => [
-				'primary' => esc_html__( 'Primary (Red)', 'raven' ),
-				'light'   => esc_html__( 'Light', 'raven' ),
-				'dark'    => esc_html__( 'Dark', 'raven' ),
-			],
-			'default'   => 'primary',
-			'condition' => [ 'btn1_label!' => '' ],
-		] );
+		$this->register_button_controls( 'btn1' );
 
 		$this->add_control( 'btn2_divider', [
 			'type' => \Elementor\Controls_Manager::DIVIDER,
 		] );
 
-		$this->add_control( 'btn2_label', [
-			'label'       => esc_html__( 'Button 2 Label', 'raven' ),
-			'type'        => \Elementor\Controls_Manager::TEXT,
-			'placeholder' => esc_html__( 'e.g. See What\'s On', 'raven' ),
-		] );
-
-		$this->add_control( 'btn2_url', [
-			'label'     => esc_html__( 'Button 2 URL', 'raven' ),
-			'type'      => \Elementor\Controls_Manager::URL,
-			'condition' => [ 'btn2_label!' => '' ],
-		] );
-
-		$this->add_control( 'btn2_style', [
-			'label'     => esc_html__( 'Button 2 Style', 'raven' ),
-			'type'      => \Elementor\Controls_Manager::SELECT,
-			'options'   => [
-				'primary' => esc_html__( 'Primary (Red)', 'raven' ),
-				'light'   => esc_html__( 'Light', 'raven' ),
-				'dark'    => esc_html__( 'Dark', 'raven' ),
-			],
-			'default'   => 'light',
-			'condition' => [ 'btn2_label!' => '' ],
-		] );
+		$this->register_button_controls( 'btn2' );
 
 		$this->end_controls_section();
 
@@ -322,22 +277,21 @@ class Hello_Child_Widget_Homepage_Hero extends \Elementor\Widget_Base {
 		$heading_tag  = \Elementor\Utils::validate_html_tag( $settings['heading_tag'] ?? 'h1' );
 		$nav_links    = (array) ( $settings['nav_links'] ?? [] );
 		$slides       = (array) ( $settings['slides'] ?? [] );
-		$btn1_label   = trim( $settings['btn1_label'] ?? '' );
-		$btn2_label   = trim( $settings['btn2_label'] ?? '' );
+
 
 		$current_path = strtok( $_SERVER['REQUEST_URI'] ?? '/', '?' );
 		?>
-		<div class="hero relative overflow-hidden h-dvh w-full flex items-stretch">
+		<div class="hero relative overflow-hidden min-h-dvh w-full flex items-stretch">
 
 			<?php // ── Background ─────────────────────────────────────────── ?>
 
-			<div class="absolute h-full w-[65%] top-0 right-0">
+			<div class="absolute h-full w-[65%] top-0 right-0 z-0 overflow-hidden">
 
 				<?php if ( 'image' === $bg_type ) :
 					$img_id = (int) ( $settings['bg_image']['id'] ?? 0 );
 					if ( $img_id ) :
 						echo wp_get_attachment_image( $img_id, 'raven-lg', false, [
-							'class' => 'w-full h-full object-cover',
+							'class' => 'absolute inset-0 w-full h-full object-cover',
 						] );
 					endif;
 
@@ -412,7 +366,7 @@ class Hello_Child_Widget_Homepage_Hero extends \Elementor\Widget_Base {
 								<figure class="js-homepage-hero-logo-wrapper [&_svg]:h-full [&_svg]:w-auto [&_svg]:shrink-0 [&_svg]:aspect-39/244">
 									<?php echo raven_get_icon( 'logo-vertical' ); ?>
 								</figure>
-								<nav class="flex flex-col gap-2 pl-[10%]">
+								<nav class="flex flex-col gap-md pl-[10%]">
 								<?php foreach ( $nav_links as $link ) :
 									$label     = esc_html( $link['nav_label'] ?? '' );
 									$href      = $link['nav_url']['url'] ?? '';
@@ -424,7 +378,7 @@ class Hello_Child_Widget_Homepage_Hero extends \Elementor\Widget_Base {
 									?>
 									<a
 										href="<?php echo esc_url( $href ); ?>"
-										class="hero-nav__link text-subtitle-md<?php echo $is_active ? ' text-fire' : ''; ?>"
+										class="hero-nav__link text-subtitle-md<?php echo $is_active ? ' text-fire font-bold' : ' font-normal'; ?>"
 										<?php echo $external ? 'target="_blank" rel="noopener noreferrer"' : ''; ?>
 									><?php echo $label; ?></a>
 								<?php endforeach; ?>
@@ -435,50 +389,43 @@ class Hello_Child_Widget_Homepage_Hero extends \Elementor\Widget_Base {
 
 					<?php // ── Heading + CTAs ──────────────────────────────── ?>
 
-					<div class="col-span-8">
-						<?php if ( $heading_text ) : ?>
-							<<?php echo $heading_tag; ?> class="hero-heading text-heading-xl mb-lg">
-								<?php echo raven_format_heading( $heading_text ); ?>
-							</<?php echo $heading_tag; ?>>
-						<?php endif; ?>
+					<div class="col-span-8 px-xl">
+						<div class="max-w-[800px] h-full mx-auto flex flex-col justify-between">
+							<div class="pb-2xl">
+								<?php if ( $heading_text ) : ?>
+									<<?php echo $heading_tag; ?> class="hero-heading text-heading-2xl max-w-[5em]">
+										<?php echo raven_format_heading( $heading_text ); ?>
+									</<?php echo $heading_tag; ?>>
+								<?php endif; ?>
+							</div>
 
-						<?php if ( $btn1_label || $btn2_label ) : ?>
-						<div class="flex flex-wrap gap-sm">
-							<?php if ( $btn1_label ) :
-								$href1   = esc_url( $settings['btn1_url']['url'] ?? '' );
-								$style1  = esc_attr( $settings['btn1_style'] ?? 'primary' );
-								$ext1    = ! empty( $settings['btn1_url']['is_external'] );
-								?>
-								<a
-									href="<?php echo $href1; ?>"
-									class="btn btn-lg btn-<?php echo $style1; ?>"
-									<?php echo $ext1 ? 'target="_blank" rel="noopener noreferrer"' : ''; ?>
-								><?php echo esc_html( $btn1_label ); ?></a>
-							<?php endif; ?>
-
-							<?php if ( $btn2_label ) :
-								$href2   = esc_url( $settings['btn2_url']['url'] ?? '' );
-								$style2  = esc_attr( $settings['btn2_style'] ?? 'light' );
-								$ext2    = ! empty( $settings['btn2_url']['is_external'] );
-								?>
-								<a
-									href="<?php echo $href2; ?>"
-									class="btn btn-lg btn-<?php echo $style2; ?>"
-									<?php echo $ext2 ? 'target="_blank" rel="noopener noreferrer"' : ''; ?>
-								><?php echo esc_html( $btn2_label ); ?></a>
-							<?php endif; ?>
+							<div>
+								<hr class="border-t-2 border-birch/25" />
+								<div class="flex flex-row gap-2xl justify-between pt-2xl">								
+									<?php
+									$btn1 = $this->render_button( $settings, 'btn1' );
+									$btn2 = $this->render_button( $settings, 'btn2' );
+									if ( $btn1 || $btn2 ) :
+									?>
+									<div class="flex flex-col flex-wrap gap-lg">
+										<?php echo $btn1; echo $btn2; ?>
+									</div>
+									<?php endif; ?>
+									<?php // ── Address ─────────────────────────────────────────── ?>
+									<div class="flex items-center shrink-0	">
+										<a target="_blank" rel="noopener noreferrer" href="https://maps.app.goo.gl/crP6djxx2x9er6Z76" class="hero-address text-subtitle-xl text-right flex flex-col leading-[1.3]">
+											<span class="font-bold">81-85</span> 
+											<span class="font-normal">Renfield Street</span> 
+											<span class="font-normal">Glasgow</span> 
+											<span class="font-bold">G2 1HH<span>
+										</a>
+									</div>								
+								</div>
+							</div>
 						</div>
-						<?php endif; ?>
+						
 					</div>
 
-				</div>
-
-				<?php // ── Address ─────────────────────────────────────────── ?>
-
-				<div class="container pb-xl">
-					<p class="hero-address text-subtitle-sm text-cloud">
-						120 West George Street, Glasgow, G2 1HH
-					</p>
 				</div>
 
 			</div>

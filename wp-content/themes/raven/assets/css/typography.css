@@ -58,10 +58,11 @@
 
 @utility text-subtitle-xl {
   font-family: var(--font-body);
-  font-size: clamp(1.25rem, 1.1989rem + 0.2273vw, 1.375rem); // 
+  font-size: clamp(1.25rem, 1.1989rem + 0.2273vw, 1.375rem); 
   font-weight: 400;
   line-height: 1.18;
   letter-spacing: 0.084em;
+  text-transform: uppercase;
 }
 
 @utility text-subtitle-lg {

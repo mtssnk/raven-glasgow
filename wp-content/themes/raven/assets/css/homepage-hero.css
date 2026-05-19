@@ -48,4 +48,5 @@
 
 [data-ken-burns="true"] .hero-slide.active img {
   animation: heroKenBurns 8s ease-out forwards;
+  will-change: transform;
 }

@@ -1,0 +1,49 @@
+# WordPress core — never need to edit these
+wp-includes/
+wp-admin/
+
+# WordPress content — large directories with no custom code
+wp-content/uploads/
+wp-content/plugins/*
+wp-content/upgrade/
+wp-content/cache/
+wp-content/mu-plugins/
+wp-content/languages/
+wp-content/backup-db/
+wp-content/ai1wm-backups/
+wp-content/wflogs/
+
+# Third-party themes (parent theme — read-only reference)
+wp-content/themes/hello-elementor/
+
+# Dependencies and build artefacts
+node_modules/
+vendor/
+wp-content/themes/raven/assets/dist/
+
+# Version control
+.git/
+
+# Logs and temp files
+*.log
+wp-content/debug.log
+
+# misc
+*.min.js
+*.min.css
+*.map
+
+#database
+*.sql
+*.sql.gz
+*.zip
+*.tar.gz
+
+# OS cruft
+.DS_Store
+Thumbs.db
+
+# Lockfiles (huge, rarely useful for Claude to read)
+composer.lock
+package-lock.json
+yarn.lock

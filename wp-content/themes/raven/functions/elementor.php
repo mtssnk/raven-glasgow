@@ -9,6 +9,29 @@ require_once get_stylesheet_directory() . '/elementor/includes/helpers.php';
 require_once get_stylesheet_directory() . '/elementor/traits/trait-button.php';
 require_once get_stylesheet_directory() . '/elementor/traits/trait-padding.php';
 
+/**
+ * Render a button outside of an Elementor widget context (e.g. template parts).
+ * Always use this instead of hand-coding btn class strings directly in HTML.
+ */
+function raven_render_button( string $label, string $url, string $variant = 'primary', string $size = 'md', string $icon = '' ): string {
+	$btn = new class {
+		use Hello_Child_Button_Controls;
+		public function render( array $settings, string $prefix ): string {
+			return $this->render_button( $settings, $prefix );
+		}
+	};
+	return $btn->render(
+		[
+			'btn_text'    => $label,
+			'btn_url'     => [ 'url' => $url ],
+			'btn_variant' => $variant,
+			'btn_size'    => $size,
+			'btn_icon'    => $icon,
+		],
+		'btn'
+	);
+}
+
 function hello_child_register_elementor_widgets( $widgets_manager ) {
 	$widgets_dir = get_stylesheet_directory() . '/elementor/widgets/';
 

@@ -361,7 +361,7 @@ class Hello_Child_Widget_Homepage_Hero extends \Elementor\Widget_Base {
 
 				<?php // ── Nav panel ───────────────────────────────────── ?>
 				<?php if ( $nav_links ) : ?>
-					<div class="hidden md:block col-span-4 hero-nav xl:border-r-2 border-birch/25">
+					<div class="hidden md:block col-span-4 hero-nav xl:border-r-2 border-pearl/25">
 						<div class="flex items-stretch">
 							<figure class="aspect-39/244 [&>svg]:h-full w-auto shrink-0">								
 								<?php echo raven_get_icon( 'logo-vertical' ); ?>							
@@ -387,7 +387,7 @@ class Hello_Child_Widget_Homepage_Hero extends \Elementor\Widget_Base {
 					</div>
 				<?php endif; ?>
 
-					<?php // ── Heading + CTAs ──────────────────────────────── ?>
+					<?php // ── Heading + CTAs ───────────────=───────────────── ?>
 
 					<div class="col-span-12 md:col-span-8 lg:px-5xl xl:px-9xl">
 						<div class="max-w-[800px] h-full mx-auto flex flex-col justify-between">
@@ -403,7 +403,7 @@ class Hello_Child_Widget_Homepage_Hero extends \Elementor\Widget_Base {
 							</div>
 
 							<div>
-								<hr class="border-t-2 border-birch/25" />
+								<hr class="border-t-2 border-pearl/25" />
 								<div class="flex flex-col md:flex-row gap-sm md:gap-6xl justify-between pt-6xl">								
 									<?php
 									$btn1 = $this->render_button( $settings, 'btn1' );

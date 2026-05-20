@@ -129,7 +129,7 @@ All in `elementor/widgets/`. Traits live in `elementor/traits/`.
 
 **Shared traits** (`elementor/traits/`):
 - `trait-padding.php` — `register_padding_controls()` / `get_padding_classes()`. Default padding: `10xl` (90–100px). Options: `none`, `md`, `lg`, `2xl`–`12xl`.
-- `trait-button-controls.php` — reusable button controls + `render_button()`
+- `trait-button.php` — reusable button controls + `render_button()`. **Never construct buttons by hand-coding `btn btn-primary btn-md` class strings.** Inside an Elementor widget use the trait's `render_button()`. In template parts and other non-widget PHP use `raven_render_button( $label, $url, $variant, $size, $icon )` (defined in `functions/elementor.php`).
 
 ## Footer system
 

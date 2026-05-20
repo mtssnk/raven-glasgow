@@ -19,7 +19,7 @@ class Hello_Child_Widget_Event_Date extends \Elementor\Widget_Base {
 	}
 
 	public function get_categories(): array {
-		return [ 'theme-elements-single' ];
+		return [ 'raven' ];
 	}
 
 	public function get_keywords(): array {

@@ -24,7 +24,7 @@ class Hello_Child_News_List extends \Elementor\Widget_Base {
 	}
 
 	public function get_categories(): array {
-		return [ 'general' ];
+		return [ 'raven' ];
 	}
 
 	public function get_keywords(): array {

@@ -21,7 +21,7 @@ class Hello_Child_Widget_Raven_Heading extends \Elementor\Widget_Base {
 	}
 
 	public function get_categories(): array {
-		return [ 'general' ];
+		return [ 'raven' ];
 	}
 
 	public function get_keywords(): array {

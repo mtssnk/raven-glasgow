@@ -22,7 +22,7 @@ class Hello_Child_Two_Column_Media_Text extends \Elementor\Widget_Base {
 	}
 
 	public function get_categories() {
-		return [ 'general' ];
+		return [ 'raven' ];
 	}
 
 	public function get_keywords() {

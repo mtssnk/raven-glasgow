@@ -97,3 +97,11 @@ if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
 		return 'disable';
 	} );
 }
+
+// Add custom category for Raven widgets.
+add_action( 'elementor/elements/categories_registered', function ( $elements_manager ) {
+    $elements_manager->add_category( 'raven', [
+        'title' => 'Raven',
+        'icon'  => 'fa fa-crow',
+    ] );
+} );

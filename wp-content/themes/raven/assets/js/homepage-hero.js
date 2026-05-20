@@ -50,31 +50,10 @@
     }
   }
 
-  function sizeLogoFigures() {
-    document.querySelectorAll(".js-homepage-hero-nav").forEach((nav) => {
-      const figure = nav.querySelector(".js-homepage-hero-logo-wrapper");
-      const svg = figure && figure.querySelector("svg");
-      if (!svg) return;
-
-      const vb = svg.viewBox.baseVal;
-      if (!vb || !vb.height) return;
-
-      figure.style.width = (figure.offsetHeight * vb.width) / vb.height + "px";
-      nav.style.opacity = "1";
-    });
-  }
-
-  let resizeTimer;
-  window.addEventListener("resize", () => {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(sizeLogoFigures, 100);
-  });
-
   function init() {
     document
       .querySelectorAll(".hero-slideshow")
       .forEach((el) => new HeroSlideshow(el));
-    document.fonts.ready.then(sizeLogoFigures);
 
     const heroEl = document.querySelector(
       ".e-con-inner > .elementor-widget-homepage-hero:first-child," +

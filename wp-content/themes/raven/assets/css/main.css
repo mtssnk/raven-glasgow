@@ -168,9 +168,9 @@ body:has(.e-con > .elementor-widget-homepage-hero:first-child)
   opacity: 0;
 }
 
-[data-elementor-type]
-  > .elementor-element:first-child
-  > :is(.e-con-inner, .e-con)
-  > .elementor-widget:first-child:not(.elementor-widget-homepage-hero) {
-  padding-top: 80px;
+.freak-header + * {
+  margin-top: 80px;
+}
+.elementor-widget-homepage-hero {
+  margin-top: -80px;
 }

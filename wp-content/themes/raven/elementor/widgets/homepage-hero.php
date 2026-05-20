@@ -355,7 +355,7 @@ class Hello_Child_Widget_Homepage_Hero extends \Elementor\Widget_Base {
 
 			<?php // ── Foreground ─────────────────────────────────────────── ?>
 
-			<div class="container relative z-2 py-xl lg:py-3xl flex items-stretch flex-col">
+			<div class="container relative z-2 py-5xl lg:py-7xl flex items-stretch flex-col">
 
 				<div class="grid gap-0 h-full">
 
@@ -389,9 +389,9 @@ class Hello_Child_Widget_Homepage_Hero extends \Elementor\Widget_Base {
 
 					<?php // ── Heading + CTAs ──────────────────────────────── ?>
 
-					<div class="col-span-12 md:col-span-8 lg:px-xl xl:px-5xl">
+					<div class="col-span-12 md:col-span-8 lg:px-5xl xl:px-9xl">
 						<div class="max-w-[800px] h-full mx-auto flex flex-col justify-between">
-							<div class="pb-2xl flex flex-row gap-[7%] sm:gap-2xl">
+							<div class="pb-6xl flex flex-row gap-[7%] sm:gap-6xl">
 								<?php if ( $heading_text ) : ?>
 									<div class="aspect-39/244 md:hidden pt-[2.2%] h-[93.8%]">
 										<?php echo raven_get_icon( 'logo-vertical' ); ?>
@@ -404,7 +404,7 @@ class Hello_Child_Widget_Homepage_Hero extends \Elementor\Widget_Base {
 
 							<div>
 								<hr class="border-t-2 border-birch/25" />
-								<div class="flex flex-col md:flex-row gap-sm md:gap-2xl justify-between pt-2xl">								
+								<div class="flex flex-col md:flex-row gap-sm md:gap-6xl justify-between pt-6xl">								
 									<?php
 									$btn1 = $this->render_button( $settings, 'btn1' );
 									$btn2 = $this->render_button( $settings, 'btn2' );

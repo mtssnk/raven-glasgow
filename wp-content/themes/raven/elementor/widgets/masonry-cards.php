@@ -164,7 +164,7 @@ class Hello_Child_Masonry_Cards extends \Elementor\Widget_Base {
 
 		$chunks = array_chunk( $cards, 3 );
 		?>
-		<div class="masonry-cards container space-y-xl md:space-y-4xl <?php echo esc_attr( $padding ); ?>"<?php echo $id_attr; ?>>
+		<div class="masonry-cards container space-y-5xl md:space-y-8xl <?php echo esc_attr( $padding ); ?>"<?php echo $id_attr; ?>>
 			<?php foreach ( $chunks as $i => $chunk ) :
 				$reverse     = ( $i % 2 === 1 );
 				$large_card  = $reverse ? ( $chunk[0] ?? null ) : ( $chunk[2] ?? null );
@@ -181,10 +181,10 @@ class Hello_Child_Masonry_Cards extends \Elementor\Widget_Base {
 					$grid_cols = $reverse ? 'md:grid-cols-[7fr_5fr]' : 'md:grid-cols-[5fr_7fr]';
 				}
 			?>
-			<div class="space-y-xl md:space-y-0 md:grid gap-4xl <?php echo esc_attr( $grid_cols ); ?>">
+			<div class="space-y-5xl md:space-y-0 md:grid gap-8xl <?php echo esc_attr( $grid_cols ); ?>">
 
 				<?php if ( ! $reverse && $has_smalls ) : ?>
-				<div class="space-y-xl md:space-y-0 md:flex flex-col gap-4xl">
+				<div class="space-y-5xl md:space-y-0 md:flex flex-col gap-8xl">
 					<?php foreach ( $small_cards as $card ) : ?>
 					<?php echo $this->render_card( $card, 'small' ); ?>
 					<?php endforeach; ?>
@@ -196,7 +196,7 @@ class Hello_Child_Masonry_Cards extends \Elementor\Widget_Base {
 				<?php endif; ?>
 
 				<?php if ( $reverse && $has_smalls ) : ?>
-				<div class="space-y-xl md:space-y-0 md:flex flex-col gap-4xl">
+				<div class="space-y-5xl md:space-y-0 md:flex flex-col gap-8xl">
 					<?php foreach ( $small_cards as $card ) : ?>
 					<?php echo $this->render_card( $card, 'small' ); ?>
 					<?php endforeach; ?>

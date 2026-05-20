@@ -68,49 +68,49 @@
     1.0739rem + 0.2273vw,
     1.25rem
   ); /* 18px → 20px */
-  --spacing-2lg: clamp(
+  --spacing-2xl: clamp(
     1.4062rem,
     1.3423rem + 0.2841vw,
     1.5625rem
   ); /* 22.5px → 25px */
-  --spacing-3lg: clamp(
+  --spacing-3xl: clamp(
     1.6875rem,
     1.6108rem + 0.3409vw,
     1.875rem
   ); /* 27px → 30px */
-  --spacing-4lg: clamp(
+  --spacing-4xl: clamp(
     1.9688rem,
     1.8793rem + 0.3977vw,
     2.1875rem
   ); /* 31.5px → 35px */
-  --spacing-xl: clamp(2.25rem, 2.1477rem + 0.4545vw, 2.5rem); /* 36px → 40px */
-  --spacing-2xl: clamp(
+  --spacing-5xl: clamp(2.25rem, 2.1477rem + 0.4545vw, 2.5rem); /* 36px → 40px */
+  --spacing-6xl: clamp(
     2.8125rem,
     2.6847rem + 0.5682vw,
     3.125rem
   ); /* 45px → 50px */
-  --spacing-3xl: clamp(
+  --spacing-7xl: clamp(
     3.375rem,
     3.2216rem + 0.6818vw,
     3.75rem
   ); /* 54px → 60px */
-  --spacing-4xl: clamp(
+  --spacing-8xl: clamp(
     3.9375rem,
     3.7585rem + 0.7955vw,
     4.375rem
   ); /* 63px → 70px */
-  --spacing-5xl: clamp(4.5rem, 4.2955rem + 0.9091vw, 5rem); /* 72px → 80px */
-  --spacing-6xl: clamp(
+  --spacing-9xl: clamp(4.5rem, 4.2955rem + 0.9091vw, 5rem); /* 72px → 80px */
+  --spacing-10xl: clamp(
     5.625rem,
     5.3693rem + 1.1364vw,
     6.25rem
   ); /* 90px → 100px */
-  --spacing-7xl: clamp(
+  --spacing-11xl: clamp(
     6.75rem,
     6.4432rem + 1.3636vw,
     7.5rem
   ); /* 108px → 120px */
-  --spacing-8xl: clamp(
+  --spacing-12xl: clamp(
     8.4375rem,
     8.054rem + 1.7045vw,
     9.375rem

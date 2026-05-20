@@ -325,7 +325,7 @@ class Hello_Child_News_List extends \Elementor\Widget_Base {
 			</div>
 
 			<?php if ( $btn_label && $btn_href ) : ?>
-			<div class="mt-xl flex justify-center">
+			<div class="mt-5xl flex justify-center">
 				<a href="<?php echo $btn_href; ?>" class="btn btn-primary btn-md"<?php echo $btn_target . $btn_rel; ?>>
 					<span class="shrink-0 w-[1em] h-[1em] inline-flex items-center justify-center [&_svg]:w-5 [&_svg]:h-5"><?php echo raven_get_icon( 'plus' ); ?></span>
 					<?php echo esc_html( $btn_label ); ?>

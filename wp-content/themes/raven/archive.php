@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<section class="pt-6xl pb-6xl">
+<section class="pt-10xl pb-10xl">
 	<div class="container">
 
 		<div class="grid grid-cols-12">
@@ -25,7 +25,7 @@
 
 		<?php if ( have_posts() ) : ?>
 
-		<div class="grid grid-cols-12 mt-6xl">
+		<div class="grid grid-cols-12 mt-10xl">
 			<?php while ( have_posts() ) : the_post(); ?>
 
 			<article class="col-span-12 md:col-span-6 xl:col-span-4">
@@ -35,7 +35,7 @@
 				</a>
 				<?php endif; ?>
 
-				<div class="space-y-md mt-xl">
+				<div class="space-y-md mt-5xl">
 					<p class="text-subtitle-sm text-cloud"><?php echo get_the_date(); ?></p>
 					<h2 class="text-heading-sm">
 						<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
@@ -47,13 +47,13 @@
 			<?php endwhile; ?>
 		</div>
 
-		<div class="mt-6xl">
+		<div class="mt-10xl">
 			<?php the_posts_pagination(); ?>
 		</div>
 
 		<?php else : ?>
 
-		<div class="grid grid-cols-12 mt-6xl">
+		<div class="grid grid-cols-12 mt-10xl">
 			<p class="col-span-12 text-body-lg text-cloud"><?php esc_html_e( 'No posts found.', 'raven' ); ?></p>
 		</div>
 

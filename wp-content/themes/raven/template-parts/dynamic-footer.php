@@ -37,7 +37,7 @@ $site_socials = array_filter( [
 		<div class="max-w-[660px] mx-auto text-center">
 			<div class="flex flex-col gap-2xl pb-4xl">
 				<?php if ( $cta_heading ) : ?>
-				<h2 class="text-heading-sm text-birch"><?php echo esc_html( $cta_heading ); ?></h2>
+				<p class="text-heading-sm text-birch"><?php echo esc_html( $cta_heading ); ?></p>
 				<?php endif; ?>
 				<?php if ( $cta_text ) : ?>
 				<p class="text-body-md text-pearl text-balance">

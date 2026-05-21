@@ -62,15 +62,14 @@
 
     if (heroEl) {
       const header = document.querySelector(".js-freak-header");
-      const trigger = heroEl.nextElementSibling;
       const OFFSET = 80; // px — increase to reveal header earlier
 
-      if (header && trigger) {
+      if (header) {
         header.style.opacity = "0";
 
         function onScroll() {
-          const atTop = trigger.getBoundingClientRect().top - OFFSET <= 0;
-          header.style.opacity = atTop ? "1" : "0";
+          const heroPast = heroEl.getBoundingClientRect().bottom - OFFSET <= 0;
+          header.style.opacity = heroPast ? "1" : "0";
         }
 
         window.addEventListener("scroll", onScroll, { passive: true });

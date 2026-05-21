@@ -69,7 +69,7 @@ class Hello_Child_Widget_Raven_Heading extends \Elementor\Widget_Base {
 				</div>
 				<hr class="border-t-2 w-[20%] absolute left-[16%] top-[-5px]" />
 				<hr class="border-t-2 w-[20%] absolute right-[16%] top-[-5px]" />
-				<h2 class="relative z-20 -top-[0.8em] text-subtitle-sm text-smoke"><?php echo raven_format_heading( $text ); ?></h2>
+				<p class="relative z-20 -top-[0.8em] text-subtitle-sm text-smoke"><?php echo raven_format_heading( $text ); ?></p>
 			</div>
 		</header>
 		<?php

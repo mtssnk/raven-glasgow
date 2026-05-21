@@ -164,6 +164,7 @@ class Hello_Child_Masonry_Cards extends \Elementor\Widget_Base {
 
 		$chunks = array_chunk( $cards, 3 );
 		?>
+
 		<div class="masonry-cards container space-y-5xl md:space-y-8xl <?php echo esc_attr( $padding ); ?>"<?php echo $id_attr; ?>>
 			<?php foreach ( $chunks as $i => $chunk ) :
 				$reverse     = ( $i % 2 === 1 );

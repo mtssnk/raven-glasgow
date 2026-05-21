@@ -42,7 +42,7 @@ function hello_child_register_elementor_widgets( $widgets_manager ) {
 	// register the replacement class.
 		// Core widget overrides (Elementor core registers at priority 5).
 	$overrides = [
-		'heading' => [ $widgets_dir . 'heading.php', 'Hello_Child_Widget_Heading' ],
+		// 'heading' => [ $widgets_dir . 'heading.php', 'Hello_Child_Widget_Heading' ],
 	];
 
 	foreach ( $overrides as $widget_name => [ $file, $class ] ) {

@@ -281,11 +281,11 @@ class Hello_Child_Widget_Homepage_Hero extends \Elementor\Widget_Base {
 
 		$current_path = strtok( $_SERVER['REQUEST_URI'] ?? '/', '?' );
 		?>
-		<div class="homepage-hero relative overflow-hidden min-h-dvh w-full flex items-stretch">
+		<header class="homepage-hero relative overflow-hidden min-h-dvh w-full flex items-stretch">
 
 			<?php // ── Background ─────────────────────────────────────────── ?>
 
-			<div class="absolute h-full w-[65%] top-0 right-0 z-0 overflow-hidden">
+			<div class="absolute h-full w-[65%] xl:w-[75%] top-0 right-0 z-0 overflow-hidden">
 
 				<?php if ( 'image' === $bg_type ) :
 					$img_id = (int) ( $settings['bg_image']['id'] ?? 0 );
@@ -355,18 +355,18 @@ class Hello_Child_Widget_Homepage_Hero extends \Elementor\Widget_Base {
 
 			<?php // ── Foreground ─────────────────────────────────────────── ?>
 
-			<div class="container relative z-2 py-5xl lg:py-7xl flex items-stretch flex-col">
+			<div class="container !max-w-none relative z-2 py-5xl lg:py-7xl flex items-stretch flex-col">
 
 				<div class="grid gap-0 h-full">
 
 				<?php // ── Nav panel ───────────────────────────────────── ?>
 				<?php if ( $nav_links ) : ?>
-					<div class="hidden md:block col-span-4 hero-nav xl:border-r-2 border-pearl/25">
+					<div class="hidden md:block col-span-4 xl:col-span-3 hero-nav xl:border-r-2 border-pearl/25">
 						<div class="flex items-stretch">
 							<figure class="aspect-39/244 [&>svg]:h-full w-auto shrink-0">								
 								<?php echo raven_get_icon( 'logo-vertical' ); ?>							
 							</figure>
-							<nav class="flex flex-col gap-md pl-[20%]">
+							<nav class="flex flex-col gap-md pl-[20%] xl:pl-8xl">
 							<?php foreach ( $nav_links as $link ) :
 								$label     = esc_html( $link['nav_label'] ?? '' );
 								$href      = $link['nav_url']['url'] ?? '';
@@ -389,14 +389,14 @@ class Hello_Child_Widget_Homepage_Hero extends \Elementor\Widget_Base {
 
 					<?php // ── Heading + CTAs ───────────────=───────────────── ?>
 
-					<div class="col-span-12 md:col-span-8 lg:px-5xl xl:px-9xl">
+					<div class="col-span-12 md:col-span-8 xl:col-span-9 lg:px-5xl xl:px-9xl">
 						<div class="max-w-[800px] h-full mx-auto flex flex-col justify-between">
 							<div class="pb-6xl flex flex-row gap-[7%] sm:gap-6xl">
 								<?php if ( $heading_text ) : ?>
 									<div class="aspect-39/244 md:hidden pt-[2.2%] h-[93.8%]">
 										<?php echo raven_get_icon( 'logo-vertical' ); ?>
 									</div>
-									<<?php echo $heading_tag; ?> class="hero-heading text-heading-2xl max-w-[5em]">
+									<<?php echo $heading_tag; ?> class="hero-heading text-heading-2xl max-w-[5em] relative top-[-0.15em]">
 										<?php echo raven_format_heading( $heading_text ); ?>
 									</<?php echo $heading_tag; ?>>
 								<?php endif; ?>
@@ -433,7 +433,7 @@ class Hello_Child_Widget_Homepage_Hero extends \Elementor\Widget_Base {
 
 			</div>
 
-		</div>
+		</header>
 		<?php
 	}
 }

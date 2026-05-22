@@ -42,6 +42,7 @@ function hello_child_register_elementor_widgets( $widgets_manager ) {
 	// register the replacement class.
 		// Core widget overrides (Elementor core registers at priority 5).
 	$overrides = [
+		'button'  => [ $widgets_dir . 'button.php',  'Hello_Child_Widget_Button'  ],
 		// 'heading' => [ $widgets_dir . 'heading.php', 'Hello_Child_Widget_Heading' ],
 	];
 
@@ -57,7 +58,8 @@ function hello_child_register_elementor_widgets( $widgets_manager ) {
 	$custom_widgets = [
 		[ $widgets_dir . 'two-column-media-text.php', 'Hello_Child_Two_Column_Media_Text' ],
 		[ $widgets_dir . 'masonry-cards.php',         'Hello_Child_Masonry_Cards'         ],
-		[ $widgets_dir . 'event-date.php',            'Hello_Child_Widget_Event_Date'     ],
+		[ $widgets_dir . 'event-date.php',            'Hello_Child_Widget_Event_Date'          ],
+		[ $widgets_dir . 'card-event-date.php',       'Hello_Child_Widget_Card_Event_Date'     ],
 		[ $widgets_dir . 'raven-heading.php',         'Hello_Child_Widget_Raven_Heading'  ],
 		[ $widgets_dir . 'news-list.php',             'Hello_Child_News_List'             ],
 		[ $widgets_dir . 'homepage-hero.php',         'Hello_Child_Widget_Homepage_Hero'  ],
@@ -97,6 +99,14 @@ if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
 		return 'disable';
 	} );
 }
+
+// Apply {{word}} → <span class="text-fire"> on both the classic and Atomic heading widgets.
+add_filter( 'elementor/widget/render_content', function ( $content, $widget ) {
+	if ( ! in_array( $widget->get_name(), [ 'heading', 'e-heading' ], true ) ) {
+		return $content;
+	}
+	return preg_replace( '/\{\{(.+?)\}\}/', '<span class="text-fire">$1</span>', $content );
+}, 10, 2 );
 
 // Add custom category for Raven widgets.
 add_action( 'elementor/elements/categories_registered', function ( $elements_manager ) {

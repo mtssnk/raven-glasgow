@@ -141,38 +141,10 @@ class Hello_Child_News_List extends \Elementor\Widget_Base {
 		$this->end_controls_section();
 	}
 
-	private function get_date_label( int $post_id ): string {
-		if ( ! has_term( 'events', 'category', $post_id ) ) {
-			$cats = get_the_category( $post_id );
-			if ( empty( $cats ) || 'uncategorized' === $cats[0]->slug || 'uncategorised' === $cats[0]->slug ) {
-				return esc_html__( 'News', 'raven' );
-			}
-			return esc_html( $cats[0]->name );
-		}
-
-		if ( function_exists( 'get_field' ) ) {
-			if ( get_field( 'event_use_custom_date', $post_id ) ) {
-				$custom = get_field( 'event_custom_date_text', $post_id );
-				if ( $custom ) {
-					return $custom;
-				}
-			}
-			$acf_date = get_field( 'event_date', $post_id );
-			if ( $acf_date ) {
-				$dt = \DateTime::createFromFormat( 'Ymd', $acf_date );
-				if ( $dt ) {
-					return $dt->format( 'D j M' );
-				}
-			}
-		}
-
-		return '';
-	}
-
 	private function render_card( \WP_Post $post ): void {
 		$id         = $post->ID;
 		$thumb_id   = get_post_thumbnail_id( $id );
-		$date_label = $this->get_date_label( $id );
+		$date_label = raven_get_event_date_label( $id );
 
 		$image = $thumb_id
 			? wp_get_attachment_image( $thumb_id, 'raven-md', false, [

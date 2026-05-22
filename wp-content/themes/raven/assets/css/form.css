@@ -1,0 +1,28 @@
+form {
+  label {
+    @apply text-subtitle-md;
+    margin-bottom: 0.4em;
+  }
+  .form-group {
+    &:not(:first-child) {
+      margin-block-start: 1.3em;
+    }
+  }
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  textarea {
+    &:focus {
+      outline: none;
+    }
+    @apply w-full bg-birch text-body-md text-night;
+    padding: 0.6em 0.8em;
+    border-radius: 3px;
+  }
+  .acteol-form-builder-privacy-policy-text {
+    @apply text-body-xs;
+  }
+  .btn {
+    @apply btn btn-primary btn-md text-subtitle-md;
+  }
+}

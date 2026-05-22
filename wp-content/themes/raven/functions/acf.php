@@ -4,6 +4,45 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+function raven_get_event_date_label( int $post_id ): string {
+	if ( ! has_term( 'events', 'category', $post_id ) ) {
+		$cats = get_the_category( $post_id );
+		if ( empty( $cats ) || in_array( $cats[0]->slug, [ 'uncategorized', 'uncategorised' ], true ) ) {
+			return 'News';
+		}
+		return $cats[0]->name;
+	}
+
+	if ( function_exists( 'get_field' ) ) {
+		if ( get_field( 'event_use_custom_date', $post_id ) ) {
+			$custom = get_field( 'event_custom_date_text', $post_id );
+			if ( $custom ) {
+				return $custom;
+			}
+		}
+		$acf_date = get_field( 'event_date', $post_id );
+		if ( $acf_date ) {
+			$dt = \DateTime::createFromFormat( 'Ymd', $acf_date );
+			if ( $dt ) {
+				return $dt->format( 'D j M' );
+			}
+		}
+	}
+
+	return '';
+}
+
+add_filter( 'get_the_date', function ( $the_date, $format, $post ) {
+	if ( is_singular() ) {
+		return $the_date;
+	}
+	if ( ! $post instanceof WP_Post || ! has_term( 'events', 'category', $post ) ) {
+		return $the_date;
+	}
+	$label = raven_get_event_date_label( $post->ID );
+	return $label ?: $the_date;
+}, 10, 3 );
+
 add_action( 'acf/init', function () {
 	if ( ! function_exists( 'acf_add_local_field_group' ) ) {
 		return;

@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 function raven_get_event_date_label( int $post_id ): string {
-	if ( ! has_term( 'events', 'category', $post_id ) ) {
+	if ( 'event' !== get_post_type( $post_id ) ) {
 		$cats = get_the_category( $post_id );
 		if ( empty( $cats ) || in_array( $cats[0]->slug, [ 'uncategorized', 'uncategorised' ], true ) ) {
 			return 'News';
@@ -36,7 +36,7 @@ add_filter( 'get_the_date', function ( $the_date, $format, $post ) {
 	if ( is_singular() ) {
 		return $the_date;
 	}
-	if ( ! $post instanceof WP_Post || ! has_term( 'events', 'category', $post ) ) {
+	if ( ! $post instanceof WP_Post || 'event' !== get_post_type( $post ) ) {
 		return $the_date;
 	}
 	$label = raven_get_event_date_label( $post->ID );
@@ -151,12 +151,7 @@ add_action( 'acf/init', function () {
 				[
 					'param'    => 'post_type',
 					'operator' => '==',
-					'value'    => 'post',
-				],
-				[
-					'param'    => 'post_category',
-					'operator' => '==',
-					'value'    => (string) ( get_term_by( 'slug', 'events', 'category' )->term_id ?? 0 ),
+					'value'    => 'event',
 				],
 			],
 		],

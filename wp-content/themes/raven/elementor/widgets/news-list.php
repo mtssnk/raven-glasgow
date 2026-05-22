@@ -40,6 +40,7 @@ class Hello_Child_News_List extends \Elementor\Widget_Base {
 			get_posts( [
 				'numberposts' => 200,
 				'post_status' => 'publish',
+				'post_type'   => [ 'post', 'event' ],
 				'orderby'     => 'title',
 				'order'       => 'ASC',
 			] ),
@@ -66,6 +67,7 @@ class Hello_Child_News_List extends \Elementor\Widget_Base {
 			'options' => [
 				'all'      => esc_html__( 'All Posts', 'raven' ),
 				'category' => esc_html__( 'Specific Category', 'raven' ),
+				'events'   => esc_html__( 'Events', 'raven' ),
 				'picked'   => esc_html__( 'Hand-picked', 'raven' ),
 			],
 			'default' => 'all',
@@ -89,7 +91,7 @@ class Hello_Child_News_List extends \Elementor\Widget_Base {
 			'min'       => 1,
 			'max'       => 9,
 			'default'   => 3,
-			'condition' => [ 'source' => [ 'all', 'category' ] ],
+			'condition' => [ 'source' => [ 'all', 'category', 'events' ] ],
 		] );
 
 		$post_options = $this->get_post_options();
@@ -199,12 +201,62 @@ class Hello_Child_News_List extends \Elementor\Widget_Base {
 					'orderby'     => 'post__in',
 					'numberposts' => count( $picked_ids ),
 					'post_status' => 'publish',
+					'post_type'   => 'any',
 				] );
+			}
+		} elseif ( 'events' === $source ) {
+			$regular_count = $sticky_id ? max( $count - 1, 0 ) : $count;
+			if ( $regular_count > 0 ) {
+				// Three queries to preserve ordering: ongoing → upcoming → recurring.
+				$today = date( 'Ymd' );
+				$base  = [
+					'post_type'    => 'event',
+					'post_status'  => 'publish',
+					'numberposts'  => $regular_count,
+					'post__not_in' => $sticky_id ? [ $sticky_id ] : [],
+				];
+
+				// 1. Ongoing: started in the past, end date is today or future.
+				$ongoing = get_posts( array_merge( $base, [
+					'meta_query' => [
+						'relation' => 'AND',
+						[ 'key' => 'event_date',     'value' => $today, 'compare' => '<'  ],
+						[ 'key' => 'event_end_date', 'value' => $today, 'compare' => '>=' ],
+					],
+				] ) );
+
+				$n_upcoming = $regular_count - count( $ongoing );
+
+				// 2. Upcoming: start date is today or future.
+				$upcoming = $n_upcoming > 0 ? get_posts( array_merge( $base, [
+					'numberposts' => $n_upcoming,
+					'meta_key'    => 'event_date',
+					'orderby'     => 'meta_value',
+					'order'       => 'ASC',
+					'meta_query'  => [
+						[ 'key' => 'event_date', 'value' => $today, 'compare' => '>=' ],
+					],
+				] ) ) : [];
+
+				$n_recurring = $n_upcoming - count( $upcoming );
+
+				// 3. Recurring / custom-date: no event_date set.
+				$recurring = $n_recurring > 0 ? get_posts( array_merge( $base, [
+					'numberposts' => $n_recurring,
+					'meta_query'  => [
+						'relation' => 'OR',
+						[ 'key' => 'event_date', 'compare' => 'NOT EXISTS' ],
+						[ 'key' => 'event_date', 'value'   => '',     'compare' => '=' ],
+					],
+				] ) ) : [];
+
+				$posts = array_merge( $ongoing, $upcoming, $recurring );
 			}
 		} else {
 			$regular_count = $sticky_id ? max( $count - 1, 0 ) : $count;
 			if ( $regular_count > 0 ) {
 				$args = [
+					'post_type'    => 'post',
 					'post_status'  => 'publish',
 					'numberposts'  => $regular_count,
 					'post__not_in' => $sticky_id ? [ $sticky_id ] : [],
@@ -212,45 +264,7 @@ class Hello_Child_News_List extends \Elementor\Widget_Base {
 				if ( 'category' === $source && ! empty( $settings['category_id'] ) ) {
 					$args['cat'] = (int) $settings['category_id'];
 				}
-
-				$events_term    = get_term_by( 'slug', 'events', 'category' );
-				$is_events_cat  = 'category' === $source
-					&& $events_term
-					&& (int) ( $settings['category_id'] ?? 0 ) === (int) $events_term->term_id;
-
-				if ( $is_events_cat ) {
-					// Two queries so ordering is predictable:
-					// 1. Upcoming dated events ordered by event_date ASC.
-					// 2. Recurring events (no event_date) fill remaining slots.
-					$base = array_merge( $args, [ 'numberposts' => $regular_count ] );
-
-					$dated = get_posts( array_merge( $base, [
-						'meta_key'   => 'event_date',
-						'orderby'    => 'meta_value',
-						'order'      => 'ASC',
-						'meta_query' => [
-							[
-								'key'     => 'event_date',
-								'value'   => date( 'Ymd' ),
-								'compare' => '>=',
-							],
-						],
-					] ) );
-
-					$remaining = $regular_count - count( $dated );
-					$recurring = $remaining > 0 ? get_posts( array_merge( $base, [
-						'numberposts' => $remaining,
-						'meta_query'  => [
-							'relation' => 'OR',
-							[ 'key' => 'event_date', 'compare' => 'NOT EXISTS' ],
-							[ 'key' => 'event_date', 'value'   => '', 'compare' => '=' ],
-						],
-					] ) ) : [];
-
-					$posts = array_merge( $dated, $recurring );
-				} else {
-					$posts = get_posts( $args );
-				}
+				$posts = get_posts( $args );
 			}
 		}
 

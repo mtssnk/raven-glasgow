@@ -59,7 +59,7 @@ function hello_child_register_elementor_widgets( $widgets_manager ) {
 		[ $widgets_dir . 'two-column-media-text.php', 'Hello_Child_Two_Column_Media_Text' ],
 		[ $widgets_dir . 'masonry-cards.php',         'Hello_Child_Masonry_Cards'         ],
 		[ $widgets_dir . 'event-date.php',            'Hello_Child_Widget_Event_Date'          ],
-		[ $widgets_dir . 'card-event-date.php',       'Hello_Child_Widget_Card_Event_Date'     ],
+		[ $widgets_dir . 'post-meta.php',             'Hello_Child_Widget_Post_Meta'           ],
 		[ $widgets_dir . 'raven-heading.php',         'Hello_Child_Widget_Raven_Heading'  ],
 		[ $widgets_dir . 'news-list.php',             'Hello_Child_News_List'             ],
 		[ $widgets_dir . 'homepage-hero.php',         'Hello_Child_Widget_Homepage_Hero'  ],

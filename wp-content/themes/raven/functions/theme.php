@@ -22,6 +22,14 @@ function hello_child_register_scripts() {
 		filemtime( get_stylesheet_directory() . '/assets/js/homepage-hero.js' ),
 		[ 'strategy' => 'defer' ]
 	);
+
+	wp_register_script(
+		'raven-fanzo-fixtures',
+		get_stylesheet_directory_uri() . '/assets/js/fanzo-fixtures.js',
+		[],
+		filemtime( get_stylesheet_directory() . '/assets/js/fanzo-fixtures.js' ),
+		true
+	);
 }
 add_action( 'wp_enqueue_scripts', 'hello_child_register_scripts' );
 

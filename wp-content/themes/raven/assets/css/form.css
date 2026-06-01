@@ -11,6 +11,7 @@ form {
   input[type="text"],
   input[type="email"],
   input[type="tel"],
+  select,
   textarea {
     &:focus {
       outline: none;

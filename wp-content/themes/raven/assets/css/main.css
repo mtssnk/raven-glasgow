@@ -10,6 +10,7 @@
 @source "../../elementor";
 @source "../../functions";
 @source "../../template-parts";
+@source "../../assets/js";
 
 /* Map Tailwind design tokens to Elementor's global CSS custom properties.
    Change colours/fonts in Elementor > Site Settings and Tailwind picks them up. */

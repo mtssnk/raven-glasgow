@@ -63,6 +63,7 @@ function hello_child_register_elementor_widgets( $widgets_manager ) {
 		[ $widgets_dir . 'raven-heading.php',         'Hello_Child_Widget_Raven_Heading'  ],
 		[ $widgets_dir . 'news-list.php',             'Hello_Child_News_List'             ],
 		[ $widgets_dir . 'homepage-hero.php',         'Hello_Child_Widget_Homepage_Hero'  ],
+		[ $widgets_dir . 'fanzo-fixtures.php',        'Hello_Child_Widget_Fanzo_Fixtures' ],
 	];
 
 	foreach ( $custom_widgets as [ $file, $class ] ) {
@@ -115,3 +116,4 @@ add_action( 'elementor/elements/categories_registered', function ( $elements_man
         'icon'  => 'fa fa-crow',
     ] );
 } );
+

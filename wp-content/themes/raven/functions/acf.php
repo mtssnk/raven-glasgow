@@ -44,14 +44,21 @@ add_filter( 'get_the_date', function ( $the_date, $format, $post ) {
 }, 10, 3 );
 
 add_filter( 'post_thumbnail_id', function ( $thumbnail_id, $post ) {
-	if ( is_singular( [ 'post', 'event' ] ) || ! function_exists( 'get_field' ) ) {
+	if ( ! function_exists( 'get_field' ) ) {
 		return $thumbnail_id;
 	}
 
 	$post_id       = is_object( $post ) ? $post->ID : (int) $post;
 	$listing_image = get_field( 'listing_image', $post_id );
+	$listing_id    = ! empty( $listing_image['id'] ) ? (int) $listing_image['id'] : 0;
 
-	return ! empty( $listing_image['id'] ) ? (int) $listing_image['id'] : $thumbnail_id;
+	if ( is_singular( [ 'post', 'event' ] ) ) {
+		// On single pages: featured image takes priority; listing image is the fallback.
+		return $thumbnail_id ?: $listing_id;
+	}
+
+	// Everywhere else (archives, pages with Loop Grid): listing image takes priority.
+	return $listing_id ?: $thumbnail_id;
 }, 10, 2 );
 
 add_action( 'acf/init', function () {

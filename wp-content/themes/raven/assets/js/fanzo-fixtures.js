@@ -57,7 +57,7 @@
       ? `<img src="${escHtml(fixture.sport.logo)}" alt="${escHtml(fixture.sport.name || "")}" class="w-6 h-6 shrink-0 object-contain" loading="lazy" width="24" height="24">`
       : "";
     const competitionLogo = fixture.competition?.logo
-      ? `<span class="flex w-12 h-12 items-center justify-center shrink-0 bg-white rounded-[3px]"><img src="${escHtml(fixture.competition.logo)}" alt="${escHtml(fixture.competition.name || "")}" class="w-10 h-auto shrink-0 object-contain" loading="lazy" width="40" height="40"></span>`
+      ? `<span class="hidden sm:flex w-12 h-12 items-center justify-center shrink-0 bg-white rounded-[3px]"><img src="${escHtml(fixture.competition.logo)}" alt="${escHtml(fixture.competition.name || "")}" class="w-10 h-auto shrink-0 object-contain" loading="lazy" width="40" height="40"></span>`
       : "";
 
     const hasTeamLogos = !!(home.logo || away.logo);

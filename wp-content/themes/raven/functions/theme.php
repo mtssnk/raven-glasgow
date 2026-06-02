@@ -44,7 +44,7 @@ function hello_child_enqueue_styles() {
 	wp_enqueue_style(
 		'hello-elementor-child-main',
 		get_stylesheet_directory_uri() . '/assets/dist/main.css',
-		[ 'raven-adobe-fonts', 'elementor-frontend' ],
+		[ 'raven-adobe-fonts' ],
 		filemtime( get_stylesheet_directory() . '/assets/dist/main.css' )
 	);
 }
@@ -100,12 +100,12 @@ add_action('init', function () {
     }
 });
 
-add_filter( 'nav_menu_link_attributes', function ( $atts, $item, $args, $depth ) {
-    if ( in_array( 'is-button', (array) $item->classes, true ) ) {
-        $atts['class'] = trim( ( $atts['class'] ?? '' ) . ' btn btn-primary btn-sm text-subtitle-sm' );
-    }
-    return $atts;
-}, 10, 4 );
+// add_filter( 'nav_menu_link_attributes', function ( $atts, $item, $args, $depth ) {
+//     if ( in_array( 'is-button', (array) $item->classes, true ) ) {
+//         $atts['class'] = trim( ( $atts['class'] ?? '' ) . ' btn btn-primary btn-sm text-subtitle-sm' );
+//     }
+//     return $atts;
+// }, 10, 4 );
 
 // Disable Gutenberg on the back end.
 add_filter( 'use_block_editor_for_post', '__return_false' );

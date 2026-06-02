@@ -170,9 +170,9 @@ body:has(.e-con > .elementor-widget-homepage-hero:first-child)
   opacity: 0;
 }
 
-.freak-header + * {
+.elementor-location-header + * {
   margin-top: 80px;
 }
 .elementor-widget-homepage-hero {
-  margin-top: -80px;
+  margin-top: -80px !important;
 }

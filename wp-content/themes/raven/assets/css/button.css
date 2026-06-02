@@ -36,3 +36,22 @@
   background-color: var(--color-night);
   color: var(--color-birch);
 }
+
+.elementor-button {
+  font-family: var(--font-body) !important;
+  font-size: 0.875rem !important; /* 14px fixed */
+  font-weight: 700 !important;
+  line-height: 1.14 !important;
+  letter-spacing: 0.084em !important;
+  text-transform: uppercase !important;
+  color: var(--color-night) !important;
+}
+
+.elementor-nav-menu--dropdown a {
+  border-inline-start: 0 !important;
+  padding-left: 1em !important;
+  padding-right: 1em !important;
+}
+.elementor-nav-menu--dropdown {
+  min-width: none !important;
+}

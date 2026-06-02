@@ -44,7 +44,7 @@ function hello_child_enqueue_styles() {
 	wp_enqueue_style(
 		'hello-elementor-child-main',
 		get_stylesheet_directory_uri() . '/assets/dist/main.css',
-		[ 'raven-adobe-fonts' ],
+		[ 'raven-adobe-fonts', 'elementor-frontend' ],
 		filemtime( get_stylesheet_directory() . '/assets/dist/main.css' )
 	);
 }
@@ -75,9 +75,9 @@ add_action('admin_init', function () {
     }
 });
 
-// Resttrict block formats in TinyMCE to only allow paragraphs and headings (h2-h6)
+// Resttrict block formats in TinyMCE to only allow paragraphs and headings (h3-h6)
 add_filter( 'tiny_mce_before_init', function ( $settings ) {
-	$settings['block_formats'] = 'Paragraph=p;Heading 2=h2;Heading 3=h3;Heading 4=h4;Heading 5=h5;Heading 6=h6;Preformatted=pre';
+	$settings['block_formats'] = 'Paragraph=p;Heading 3=h3;Heading 4=h4;Heading 5=h5;Heading 6=h6;Preformatted=pre';
 	return $settings;
 } );
 

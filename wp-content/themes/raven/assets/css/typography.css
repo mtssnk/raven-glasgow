@@ -173,18 +173,19 @@ h5 {
 } */
 
 .freak-mce,
-.elementor-widget-text-editor {
+.elementor-widget-text-editor,
+.elementor-widget-theme-post-content {
   h2 {
-    @apply text-heading-lg;
+    @apply text-heading-md;
   }
 
   h3 {
-    @apply text-heading-md;
+    @apply text-heading-sm;
   }
 
   h4,
   h5 {
-    @apply text-heading-sm;
+    @apply text-heading-xs;
   }
   h1,
   h2,

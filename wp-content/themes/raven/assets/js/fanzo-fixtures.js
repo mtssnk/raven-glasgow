@@ -45,7 +45,7 @@
     const away = fixture.teams?.find((t) => t.side === "away") || {};
 
     const teamLogoClass =
-      "hidden sm:block w-10 h-10 lg:w-19 lg:h-19 shrink-0 object-contain";
+      "hidden sm:block w-10 h-10 lg:w-18 lg:h-18 shrink-0 object-contain";
     const homeLogo = home.logo
       ? `<img src="${escHtml(home.logo)}" alt="${escHtml(home.name || "")}" class="${teamLogoClass}" loading="lazy" width="76" height="76">`
       : "";
@@ -73,7 +73,7 @@
       ? `<div class="flex items-center justify-center gap-4 flex-1">
     ${homeLogo}
     <div class="text-center">
-      <p class="text-body-xl font-bold text-white">${escHtml(fixture.eventName)}</p>
+      <p class="text-body-xl font-bold leading-[1.3] text-white">${escHtml(fixture.eventName)}</p>
       <div class="flex items-center justify-center gap-1.5">
         <p class="text-body-lg font-light text-cloud">${escHtml(fixture.competition?.name || "")}</p>
       </div>
@@ -83,7 +83,7 @@
       : `<div class="flex items-center gap-4 flex-1 justify-center">
     ${competitionLogo}
     <div class="text-left flex flex-col gap-1">
-      <p class="text-body-xl font-bold text-white">${escHtml(fixture.eventName)}</p>
+      <p class="text-body-xl font-bold leading-[1.3] text-white">${escHtml(fixture.eventName)}</p>
       <p class="text-body-lg font-light text-cloud">${escHtml(fixture.competition?.name || "")}</p>
     </div>
   </div>`;

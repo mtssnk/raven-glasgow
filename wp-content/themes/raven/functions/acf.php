@@ -43,6 +43,17 @@ add_filter( 'get_the_date', function ( $the_date, $format, $post ) {
 	return $label ?: $the_date;
 }, 10, 3 );
 
+add_filter( 'post_thumbnail_id', function ( $thumbnail_id, $post ) {
+	if ( is_singular( [ 'post', 'event' ] ) || ! function_exists( 'get_field' ) ) {
+		return $thumbnail_id;
+	}
+
+	$post_id       = is_object( $post ) ? $post->ID : (int) $post;
+	$listing_image = get_field( 'listing_image', $post_id );
+
+	return ! empty( $listing_image['id'] ) ? (int) $listing_image['id'] : $thumbnail_id;
+}, 10, 2 );
+
 add_action( 'acf/init', function () {
 	if ( ! function_exists( 'acf_add_local_field_group' ) ) {
 		return;
@@ -156,6 +167,46 @@ add_action( 'acf/init', function () {
 			],
 		],
 		'menu_order'            => 0,
+		'position'              => 'normal',
+		'style'                 => 'default',
+		'label_placement'       => 'top',
+		'instruction_placement' => 'label',
+		'active'                => true,
+	] );
+
+	acf_add_local_field_group( [
+		'key'    => 'group_listing_image',
+		'title'  => 'Listing Image',
+		'fields' => [
+			[
+				'key'           => 'field_listing_image',
+				'label'         => 'Listing Image',
+				'name'          => 'listing_image',
+				'type'          => 'image',
+				'instructions'  => 'Image without text to be shown on the listing page.',
+				'required'      => 1,
+				'return_format' => 'array',
+				'preview_size'  => 'medium',
+				'library'       => 'all',
+			],
+		],
+		'location' => [
+			[
+				[
+					'param'    => 'post_type',
+					'operator' => '==',
+					'value'    => 'post',
+				],
+			],
+			[
+				[
+					'param'    => 'post_type',
+					'operator' => '==',
+					'value'    => 'event',
+				],
+			],
+		],
+		'menu_order'            => 10,
 		'position'              => 'normal',
 		'style'                 => 'default',
 		'label_placement'       => 'top',

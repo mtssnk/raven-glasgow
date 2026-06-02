@@ -44,7 +44,7 @@ class Hello_Child_Widget_Event_Date extends \Elementor\Widget_Base {
 			return;
 		}
 
-		$event_classes = "text-center container text-heading-xs -mb-[1em] pt-lg";
+		$event_classes = "text-heading-xs";
 
 		$use_custom = get_field( 'event_use_custom_date' );
 

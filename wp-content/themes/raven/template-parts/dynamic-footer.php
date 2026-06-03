@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 $cta_global   = (bool) get_option( 'raven_footer_cta_enabled', '0' );
-$cta_override = get_post_meta( get_the_ID(), '_raven_footer_cta', true ) ?: 'inherit';
+$cta_override = get_post_meta( get_queried_object_id(), '_raven_footer_cta', true ) ?: 'inherit';
 
 if ( 'show' === $cta_override ) {
 	$show_cta = true;

@@ -64,6 +64,7 @@ function hello_child_register_elementor_widgets( $widgets_manager ) {
 		// [ $widgets_dir . 'news-list.php',             'Hello_Child_News_List'             ],
 		[ $widgets_dir . 'homepage-hero.php',         'Hello_Child_Widget_Homepage_Hero'  ],
 		[ $widgets_dir . 'fanzo-fixtures.php',        'Hello_Child_Widget_Fanzo_Fixtures' ],
+		[ $widgets_dir . 'post-link.php',             'Hello_Child_Widget_Post_Link'       ],
 	];
 
 	foreach ( $custom_widgets as [ $file, $class ] ) {

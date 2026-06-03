@@ -35,6 +35,6 @@ form {
     @apply text-body-xs;
   }
   .btn {
-    @apply btn btn-primary btn-md text-subtitle-md;
+    @apply !btn !btn-primary !btn-md !text-subtitle-md;
   }
 }

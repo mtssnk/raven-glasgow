@@ -220,4 +220,41 @@ add_action( 'acf/init', function () {
 		'instruction_placement' => 'label',
 		'active'                => true,
 	] );
+
+	acf_add_local_field_group( [
+		'key'    => 'group_post_details',
+		'title'  => 'Post Details',
+		'fields' => [
+			[
+				'key'           => 'field_post_link',
+				'label'         => 'Link',
+				'name'          => 'link',
+				'type'          => 'link',
+				'required'      => 0,
+				'return_format' => 'array',
+			],
+		],
+		'location' => [
+			[
+				[
+					'param'    => 'post_type',
+					'operator' => '==',
+					'value'    => 'post',
+				],
+			],
+			[
+				[
+					'param'    => 'post_type',
+					'operator' => '==',
+					'value'    => 'event',
+				],
+			],
+		],
+		'menu_order'            => 20,
+		'position'              => 'normal',
+		'style'                 => 'default',
+		'label_placement'       => 'top',
+		'instruction_placement' => 'label',
+		'active'                => true,
+	] );
 } );

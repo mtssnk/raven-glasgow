@@ -176,3 +176,34 @@ body:has(.e-con > .elementor-widget-homepage-hero:first-child)
 .elementor-widget-homepage-hero {
   margin-top: -80px !important;
 }
+
+.sub-menu.elementor-nav-menu--dropdown {
+  background: var(--color-ship) !important;
+  color: var(--color-birch) !important;
+}
+.sub-menu.elementor-nav-menu--dropdown a {
+  background: var(--color-birch) !important;
+  color: var(--color-night) !important;
+  padding: 13px 20px 15px !important;
+}
+.sub-menu.elementor-nav-menu--dropdown a:not(first-child) {
+  border-top: 1px solid var(--color-white);
+}
+@media (min-width: 1024px) {
+  .sub-menu.elementor-nav-menu--dropdown a:not(first-child) {
+    border-top: none;
+  }
+  .sub-menu.elementor-nav-menu--dropdown a {
+    background: var(--color-ship) !important;
+    color: var(--color-birch) !important;
+  }
+}
+.elementor-nav-menu--dropdown .elementor-item:hover {
+  background: unset !important;
+  color: var(--color-night) !important;
+}
+.elementor-nav-menu--dropdown .elementor-item.elementor-item-active,
+.elementor-nav-menu--dropdown .elementor-item.highlighted {
+  background: transparent !important;
+  color: var(--color-night) !important;
+}

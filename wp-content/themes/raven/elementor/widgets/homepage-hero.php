@@ -396,7 +396,7 @@ class Hello_Child_Widget_Homepage_Hero extends \Elementor\Widget_Base {
 									<div class="aspect-39/244 md:hidden pt-[2.2%] h-[93.8%]">
 										<?php echo raven_get_icon( 'logo-vertical' ); ?>
 									</div>
-									<<?php echo $heading_tag; ?> class="hero-heading text-heading-2xl max-w-[5em] relative top-[-0.15em]">
+									<<?php echo $heading_tag; ?> class="hero-heading mt-[0.2em] md:mt-0 text-heading-2xl max-w-[5em] relative top-[-0.15em]">
 										<?php echo raven_format_heading( $heading_text ); ?>
 									</<?php echo $heading_tag; ?>>
 								<?php endif; ?>

@@ -175,6 +175,9 @@ h5 {
 .freak-mce,
 .elementor-widget-text-editor,
 .elementor-widget-theme-post-content {
+  h1 {
+    @apply text-heading-lg;
+  }
   h2 {
     @apply text-heading-md;
   }

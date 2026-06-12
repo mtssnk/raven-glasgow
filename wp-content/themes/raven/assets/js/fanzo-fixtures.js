@@ -146,16 +146,68 @@
 
       this.listEl = el.querySelector(".js-fanzo-list");
       this.filterEl = el.querySelector(".js-fanzo-filter");
-      this.filterWrapEl = el.querySelector(".js-fanzo-filter-wrap");
+      this.filterWrapEl = el.querySelector(".js-fanzo-sport-wrap");
+      this.dateSelectEl = el.querySelector(".js-fanzo-date-filter");
+      this.dateWrapEl = el.querySelector(".js-fanzo-date-wrap");
       this.loadMoreWrapEl = el.querySelector(".js-fanzo-load-more-wrap");
       this.loadMoreEl = el.querySelector(".js-fanzo-load-more");
 
       this.activeSport = "";
+      this.activeDateKey = "";
       this.page = 1;
 
+      this.buildDateSelect();
       this.buildFilter();
       this.paint();
       this.bindEvents();
+    }
+
+    buildDateSelect() {
+      if (!this.dateSelectEl) return;
+
+      const now = new Date();
+      const todayKey = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}`;
+
+      const dateKeys = [
+        ...new Set(
+          this.fixtures.map((f) => parseLocal(f.startTimeLocal).dateKey),
+        ),
+      ].sort();
+
+      if (dateKeys.length <= 1) {
+        this.dateWrapEl?.classList.add("hidden");
+        return;
+      }
+
+      // Group dates by month.
+      const months = new Map();
+      dateKeys.forEach((k) => {
+        const [year, month, day] = k.split("-").map(Number);
+        const monthKey = `${year}-${String(month).padStart(2, "0")}`;
+        if (!months.has(monthKey)) {
+          const label = new Date(year, month - 1, 1).toLocaleDateString(
+            "en-GB",
+            { month: "long", year: "numeric" },
+          );
+          months.set(monthKey, { label, dates: [] });
+        }
+        const optionLabel =
+          k === todayKey ? "Today" : formatDateLabel(year, month, day);
+        months.get(monthKey).dates.push({ key: k, label: optionLabel });
+      });
+
+      let html = "";
+      months.forEach(({ label, dates }) => {
+        const options = dates
+          .map(
+            ({ key, label }) =>
+              `<option value="${escHtml(key)}">${escHtml(label)}</option>`,
+          )
+          .join("");
+        html += `<optgroup label="${escHtml(label)}">${options}</optgroup>`;
+      });
+
+      this.dateSelectEl.insertAdjacentHTML("beforeend", html);
     }
 
     buildFilter() {
@@ -178,10 +230,16 @@
     }
 
     filtered() {
-      if (!this.activeSport) return this.fixtures;
-      return this.fixtures.filter(
-        (f) => String(f.sport?.id) === this.activeSport,
-      );
+      let result = this.fixtures;
+      if (this.activeSport) {
+        result = result.filter((f) => String(f.sport?.id) === this.activeSport);
+      }
+      if (this.activeDateKey) {
+        result = result.filter(
+          (f) => parseLocal(f.startTimeLocal).dateKey === this.activeDateKey,
+        );
+      }
+      return result;
     }
 
     paint() {
@@ -204,6 +262,12 @@
     bindEvents() {
       this.filterEl?.addEventListener("change", () => {
         this.activeSport = this.filterEl.value;
+        this.page = 1;
+        this.paint();
+      });
+
+      this.dateSelectEl?.addEventListener("change", () => {
+        this.activeDateKey = this.dateSelectEl.value;
         this.page = 1;
         this.paint();
       });

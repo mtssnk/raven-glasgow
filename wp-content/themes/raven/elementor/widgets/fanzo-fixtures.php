@@ -149,11 +149,17 @@ class Hello_Child_Widget_Fanzo_Fixtures extends \Elementor\Widget_Base {
 		<div class="fanzo-fixtures js-fanzo-fixtures"
 		     data-widget-id="<?php echo esc_attr( $widget_id ); ?>">
 
-			<form class="js-fanzo-filter-wrap mb-6" aria-label="<?php esc_attr_e( 'Filter fixtures', 'raven' ); ?>">
-				<div class="flex items-center gap-4 mb-2">
-					<label class="text-subtitle-sm mb-0">Filter</label>
-					<select class="js-fanzo-filter w-auto">
-						<option value=""><?php esc_html_e( 'All Sports', 'raven' ); ?></option>
+			<form class="js-fanzo-filter-wrap md:flex flex-wrap items-center gap-4 mb-6" aria-label="<?php esc_attr_e( 'Filter fixtures', 'raven' ); ?>">
+				<div class="js-fanzo-date-wrap flex flex-col md:flex-row md:items-center gap-3">
+					<label class="text-subtitle-sm">Filter</label>
+					<select class="js-fanzo-filter">
+						<option value=""><?php esc_html_e( 'All Sports & Events', 'raven' ); ?></option>
+					</select>
+				</div>
+				<div class="js-fanzo-sport-wrap flex items-center mt-3 md:mt-0">					
+					<select class="js-fanzo-date-filter">
+						<option value="" disabled selected><?php esc_html_e( 'Select a date', 'raven' ); ?></option>
+						<option value=""><?php esc_html_e( 'All dates', 'raven' ); ?></option>
 					</select>
 				</div>
 			</form>
